@@ -23,4 +23,7 @@ python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --n_utter
 ~~~
 3. See the output file at "extracted_dialog/output_dialog_{lang}.txt"
 
-(note that each line of the output corresponds to a dialog session, which contains at most n_utter utterances)
+Notes:
+
+1. Each line of the output corresponds to a dialog session, which contains at most n_utter utterances)
+2. There are already extracted outputs in the extracted_dialog folder for 4 languages
