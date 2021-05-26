@@ -49,6 +49,7 @@ Python 3.6
 // Command line
 python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --n_utter=4
 ~~~
+Note: Add --speaker=xxx (replace xxx by a character name, e.g., Keqing when lang=EN) to your command if you'd only like to extract xxx's dialogs (make sure you type the speaker correctly and note for capital letters)
 
 3. See the output dialog and other info at "extracted_dialog"
 
