@@ -91,6 +91,11 @@ def get_dialogs(args, textMapHash):
                 if sentence != "":
                     context.append(speaker + "\t" + sentence)
                 if len(context[-args.n_utter:]) > 1:
+
+                    if args.speaker != "":
+                        if speaker != args.speaker:
+                            continue
+
                     output_dialog.add(str(context[-args.n_utter:]))
 
     return output_dialog
@@ -158,18 +163,30 @@ def get_avatar_info(repo, textMapHash):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--repo', default='PATH_TO_GENSHINDATA', type=str, required=False, help='data dir')
+    parser.add_argument('--repo', default='PATH_TO_GENSHINDATA', type=str, required=True, help='data dir')
     parser.add_argument('--lang', default='CHS', type=str, required=False, help='language type')
     parser.add_argument('--n_utter', default=4, type=int, required=False, help='max number of utterances for a session')
+    parser.add_argument('--speaker', default="", type=str, required=False,
+                        help='extract dialogs of all speakers by default, however one can specify a speaker name so as '
+                             'to only extract his/her dialog')
     args = parser.parse_args()
 
     with open(os.path.join(args.repo, "TextMap/Text{}.json".format(args.lang)), "r", encoding="utf-8") as f:
         textMapHash = json.load(f)
 
     output_dialog = get_dialogs(args, textMapHash)
-    with open("extracted_dialog/output_dialog_{}.txt".format(args.lang), "w", encoding='utf-8') as f:
-        print("\n".join(list(output_dialog)), file=f)
-    print("Output at extracted_dialog/output_dialog_{}.txt".format(args.lang))
+    if len(output_dialog):
+        output_file = "extracted_dialog/output_dialog_{}.txt".format(args.lang)
+        if args.speaker != "":
+            output_file = "extracted_dialog/output_dialog_{}_{}.txt".format(args.lang, args.speaker)
+        with open(output_file, "w", encoding='utf-8') as f:
+            print("\n".join(list(output_dialog)), file=f)
+        print("Output at {}".format(output_file))
+    else:
+        if args.speaker != "":
+            print("No dialogs found. check if the speaker {} exists".format(args.speaker))
+        else:
+            print("No dialogs found.")
 
     avatar2info = get_avatar_info(args.repo, textMapHash)
     with open("extracted_dialog/output_avatar_{}.json".format(args.lang), "w", encoding='utf-8') as f:
