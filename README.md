@@ -1,17 +1,39 @@
 # GenshinDialog
 This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
 
+- Samples of random dialog sessions
 ~~~
-# Samples of random dialog sessions
-# English
+# lang=EN
 ['Jean\tThank you for accepting our invitation, traveler.', 'PLAYER\tGoodbye.']
 ['Alois\tUgh...', 'PLAYER\tAllow me.', 'Noelle\t#Oh? ...You want to escort him yourself, {NICKNAME}?']
 ['???\tHow about you let me take over?', 'PLAYER\tThe black market?']
 
-# Chinese Simplified
+# lang=CHS
 ['香菱\t嗯，少一种「噼咔」的感觉。', '派蒙\t这么一说确实不够「噼咔」呢。', 'PLAYER\t为什么派蒙能明白？！', '派蒙\t哼哼哼。']
 ['清昼\t呵呵，「彩头」…也不知道这个词是谁教他们的。', 'PLAYER\t那你和梵米尔的比试怎么办？']
 ['派蒙\t对呀对呀！', 'PLAYER\t画作承载的是记忆。', '派蒙\t是的！', 'PLAYER\t别轻易放弃与回忆有关的东西。']
+~~~
+- Samples of avatar information
+~~~
+# lang=JA
+"七七": {
+        "birthday": "3.3",
+        "constellation": "法鈴座",
+        "desc": "薬舗「不卜廬」の薬採り兼弟子、紙のように白い顔色で不死身。口数が少なく、あまり表情がない。",
+        "element": "氷",
+        "native": "不卜廬",
+        "sayings": [
+            "初めまして…\t七七、キョンシーだ。…ん？あと何だっけ。",
+            "世間話·独り言\tん、今…何を話そうとしたっけ…",
+            ...,
+            "突破した感想·結\tあなたがいてくれたおかげだ、ありがとう…もうひとつ願いを叶えてくれる？これからは七七に守らせてほしいけど、いいかな？"
+        ],
+        "story": [
+            "キャラクター詳細\tキョンシーなのだから、表情が固いことも許されるだろう。\\nキョンシーではあるが、七七はきちんと体を鍛えている。\\n記憶力は極めて悪い。それは、七七が人に対して冷たい理由の1つだった。\\n七七の外見は、ずっと亡くなった時のままであるため、実年齢は推測不可能である。\\nキョンシーを動かすには、勅令が必要だ。しかし、ある原因で七七は自分で自分に勅令を下しているのだ。",
+            ...,
+        ],
+        "title": "冷たき黄泉帰り"
+    }
 ~~~
 
 ### Requirement
