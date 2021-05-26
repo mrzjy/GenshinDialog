@@ -49,7 +49,8 @@ Python 3.6
 // Command line
 python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --n_utter=4
 ~~~
-3. See the output file at "extracted_dialog/output_dialog_{lang}.txt"
+
+3. See the output dialog and other info at "extracted_dialog"
 
 Notes:
 
