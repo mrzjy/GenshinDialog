@@ -1,5 +1,6 @@
 # GenshinDialog
 This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
+赶紧的
 
 - Samples of random dialog sessions
 ~~~
