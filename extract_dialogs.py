@@ -14,7 +14,34 @@ def remove_tags(text):
     return TAG_RE.sub('', text)
 
 
-def get_dialogs(args, textMapHash):
+def extract_dialogs_from_avatarInfo(args, avatar2info):
+    dialogs = []
+    for avatar, info in avatar2info.items():
+        sayings_list = info.get("sayings", [])
+        for sayings in sayings_list:
+            topic, content = sayings.split("\t")
+            if "{NICKNAME}" in content and "\\n" in content:
+                # sayings of traveller involve paimon, which can be further splitted as dialogs
+                sub_dialog = []
+                for turn in content.split("\\n"):
+                    turn = turn.replace(": ", "：")
+                    splits = turn.split("：")
+                    if len(splits) != 2:
+                        splits = [splits[0], "：".join(splits[1:])]
+
+                    sub_dialog.append("{}\t{}".format(splits[0] if splits[0] != "{NICKNAME}" else "PLAYER", splits[1]))
+
+                if len(sub_dialog) > args.n_utter:
+                    for i in range(len(sub_dialog) - args.n_utter):
+                        dialogs.append(sub_dialog[i:i+args.n_utter])
+                else:
+                    dialogs.append(sub_dialog)
+                continue
+            dialogs.append(["PLAYER\t{}".format(topic), "{}\t{}".format(avatar, content)])
+    return dialogs
+
+
+def get_dialogs(args, textMapHash, avatar2info):
     npcId2Name = {}
     dialogId2info = {}
 
@@ -98,6 +125,9 @@ def get_dialogs(args, textMapHash):
 
                     output_dialog.add(str(context[-args.n_utter:]))
 
+    extra_dialogs = extract_dialogs_from_avatarInfo(args, avatar2info)
+    for d in extra_dialogs:
+        output_dialog.add(str(d))
     return output_dialog
 
 
@@ -174,7 +204,13 @@ if __name__ == '__main__':
     with open(os.path.join(args.repo, "TextMap/Text{}.json".format(args.lang)), "r", encoding="utf-8") as f:
         textMapHash = json.load(f)
 
-    output_dialog = get_dialogs(args, textMapHash)
+    avatar2info = get_avatar_info(args.repo, textMapHash)
+    with open("extracted_dialog/output_avatar_{}.json".format(args.lang), "w", encoding='utf-8') as f:
+        json_file = json.dumps(avatar2info, sort_keys=True, indent=4, ensure_ascii=False)
+        print(json_file, file=f)
+    print("Output at extracted_dialog/output_avatar_{}.json".format(args.lang))
+
+    output_dialog = get_dialogs(args, textMapHash, avatar2info)
     if len(output_dialog):
         output_file = "extracted_dialog/output_dialog_{}.txt".format(args.lang)
         if args.speaker != "":
@@ -187,9 +223,3 @@ if __name__ == '__main__':
             print("No dialogs found. check if the speaker {} exists".format(args.speaker))
         else:
             print("No dialogs found.")
-
-    avatar2info = get_avatar_info(args.repo, textMapHash)
-    with open("extracted_dialog/output_avatar_{}.json".format(args.lang), "w", encoding='utf-8') as f:
-        json_file = json.dumps(avatar2info, sort_keys=True, indent=4, ensure_ascii=False)
-        print(json_file, file=f)
-    print("Output at extracted_dialog/output_avatar_{}.json".format(args.lang))
