@@ -23,7 +23,7 @@ This project simply extracts all character conversations in Genshin Project, in 
 ~~~
 - Samples of avatar information
 ~~~
-# lang=JA
+# lang=JP
 "七七": {
         "birthday": "3.3",
         "constellation": "法鈴座",
