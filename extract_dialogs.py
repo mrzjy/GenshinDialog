@@ -128,6 +128,7 @@ def get_dialogs(args, textMapHash, avatar2info):
     extra_dialogs = extract_dialogs_from_avatarInfo(args, avatar2info)
     for d in extra_dialogs:
         output_dialog.add(str(d))
+    print("Total num of dialog sessions: {}".format(len(output_dialog)))
     return output_dialog
 
 
@@ -201,7 +202,7 @@ if __name__ == '__main__':
                              'to only extract his/her dialog')
     args = parser.parse_args()
 
-    with open(os.path.join(args.repo, "TextMap/Text{}.json".format(args.lang)), "r", encoding="utf-8") as f:
+    with open(os.path.join(args.repo, "TextMap/TextMap{}.json".format(args.lang)), "r", encoding="utf-8") as f:
         textMapHash = json.load(f)
 
     avatar2info = get_avatar_info(args.repo, textMapHash)

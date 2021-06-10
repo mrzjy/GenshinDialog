@@ -1,6 +1,14 @@
 # GenshinDialog
 This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
 
+- Current state of dialog extraction (Game version 1.6.0)
+
+| Num  | Count | 
+:-----------: | :-----------:  |
+| Total num of roles (speakers)   | 1,160  |
+| Total num of utterances  | 52,611  |
+| Total num of dialog sessions  | 21,950 |
+
 - Samples of random dialog sessions
 ~~~
 # lang=EN
