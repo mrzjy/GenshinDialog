@@ -5,9 +5,9 @@ This project simply extracts all character conversations in Genshin Project, in 
 
 | Num  | Count | 
 :-----------: | :-----------:  |
-| Total num of roles (speakers)   | 1,160  |
-| Total num of utterances  | 52,611  |
-| Total num of dialog sessions  | 21,950 |
+| Total num of roles (speakers)   | 1,528  |
+| Total num of utterances  | 71,028  |
+| Total num of dialog sessions  | 30,574 |
 
 - Samples of random dialog sessions
 ~~~
