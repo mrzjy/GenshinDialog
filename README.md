@@ -1,7 +1,7 @@
 # GenshinDialog
 This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
 
-- Current state of dialog extraction (Game version 1.6.0)
+- Current state of dialog extraction (Game version 2.0)
 
 | Num  | Count | 
 :-----------: | :-----------:  |
