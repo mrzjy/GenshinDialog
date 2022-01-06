@@ -1,19 +1,17 @@
 # GenshinDialog
-[README-老司机版](README_zh.md)
+本项目包含原神的人物对话, 并且以"speaker \t utterance"的格式按行储存
 
-This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
-
-- Current state of dialog extraction (Game version 2.4)
+- 当前游戏版本：2.4
 
 | Num  | Count | 
 :-----------: | :-----------:  |
-| Total num of roles (speakers)   | 1,914  |
-| Total num of utterances  | 99,823  |
-| Total num of dialog sessions  | 46,738 |
+| 角色数 | 1,914  |
+| 对话量 | 99,823 |
+| 总轮数 | 46,738 |
 
-(Note: stats above are from lang=CHS, which is slightly different with other languages)
+(注：不同语言下统计结果会有轻微出入)
 
-- Samples of random dialog sessions
+- 随机示例
 ~~~
 # lang=EN
 ['Jean\tThank you for accepting our invitation, traveler.', 'PLAYER\tGoodbye.']
@@ -25,7 +23,7 @@ This project simply extracts all character conversations in Genshin Impact, in a
 ['清昼\t呵呵，「彩头」…也不知道这个词是谁教他们的。', 'PLAYER\t那你和梵米尔的比试怎么办？']
 ['派蒙\t对呀对呀！', 'PLAYER\t画作承载的是记忆。', '派蒙\t是的！', 'PLAYER\t别轻易放弃与回忆有关的东西。']
 ~~~
-- Samples of avatar information
+- 附带抽取的角色信息示例
 ~~~
 # lang=JP
 "七七": {
