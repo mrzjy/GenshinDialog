@@ -1,5 +1,5 @@
 # GenshinDialog
-This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
+This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
 - Current state of dialog extraction (Game version 2.4)
 
