@@ -1,5 +1,7 @@
 # GenshinDialog
 
+本项目提供并维护原神对话语料
+
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
 - Current game version 2.5
