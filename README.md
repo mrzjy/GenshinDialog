@@ -1,31 +1,47 @@
 # GenshinDialog
-[README-老司机版](README_zh.md)
 
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
-- Current state of dialog extraction (Game version 2.4)
+- Current game version 2.5
 
-| Num  | Count | 
+| Stat  | Count | 
 :-----------: | :-----------:  |
-| Total num of roles (speakers)   | 1,914  |
-| Total num of utterances  | 99,823  |
-| Total num of dialog sessions  | 46,738 |
+| Total num of roles (speakers)   | 1,119  |
+| Total num of utterances  | 77,981  |
+| Total num of dialog sessions  | 78,279 |
+| Average num of turns per dialog  | 23.4 |
 
-(Note: stats above are from lang=CHS, which is slightly different with other languages)
+- Note
 
-- Samples of random dialog sessions
+stats above are from lang=CHS, which is slightly different with other languages
+
+There are scenarios where user chooses different responses and thus lead to different dialog path, each path is treated as a unique dialog, which is why you might see multiple dialogs that share most content except only for one or two utterances.
+
+- Random samples
 ~~~
 # lang=EN
-['Jean\tThank you for accepting our invitation, traveler.', 'PLAYER\tGoodbye.']
-['Alois\tUgh...', 'PLAYER\tAllow me.', 'Noelle\t#Oh? ...You want to escort him yourself, {NICKNAME}?']
-['???\tHow about you let me take over?', 'PLAYER\tThe black market?']
-
+[
+    "Paimon\tOoh! Did you just feel the elements of the world?",
+    "Paimon\tSeems all you had to do was just touch the statue and you got the power of Anemo!",
+    "Paimon\tAs much as they may want it, people in this world can never get a hold of powers as easily as you...",
+    "Traveller\tI think I know why, it's because...",
+    "Paimon\tAh-ha, it's because you're not from this world to begin with.",
+    "Paimon\tIf we keep heading west from here, we'll eventually reach Mondstadt, the City of Freedom.",
+    "Paimon\tMondstadt is the city of wind, because they worship the God of Anemo.",
+    "Paimon\tSo perhaps, because you got power from the God of Anemo, you can find some clues there.",
+    "Paimon\tThere are also lots of bards there, so perhaps one of them has heard news of your {Msister}{Fbrother}.",
+    "Paimon\tLet's move then!",
+    "Paimon\tThe elements in this world responded to your prayers and Paimon thinks that's a lovely sign."
+],
 # lang=CHS
-['香菱\t嗯，少一种「噼咔」的感觉。', '派蒙\t这么一说确实不够「噼咔」呢。', 'PLAYER\t为什么派蒙能明白？！', '派蒙\t哼哼哼。']
-['清昼\t呵呵，「彩头」…也不知道这个词是谁教他们的。', 'PLAYER\t那你和梵米尔的比试怎么办？']
-['派蒙\t对呀对呀！', 'PLAYER\t画作承载的是记忆。', '派蒙\t是的！', 'PLAYER\t别轻易放弃与回忆有关的东西。']
+[
+    "标识牌\t「夏日特供葡萄汁 两瓶一摩拉」",
+    "派蒙\t居然有这么好的事！",
+    "标识牌\t「已售罄 多谢惠顾」",
+    "派蒙\t好吧…"
+],
 ~~~
-- Samples of avatar information
+- Random avatars
 ~~~
 # lang=JP
 "七七": {
@@ -59,20 +75,57 @@ Python 3.6
 2. Run extract_dialogs.py file
 ~~~
 // Command line
-python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --n_utter=4
-~~~
-Note: Add --speaker=xxx (replace xxx by a character name, e.g., Keqing when lang=EN) to your command if you'd only like to extract xxx's dialogs (make sure you type the speaker correctly and note for capital letters)
+python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS
 
-3. See the output dialog and other info at "extracted_dialog"
+// The output are like the following
+Summarizing statistics:
+Below are string variables that appear in dialogs...
+        Frequency       Variable
+        16047   {NICKNAME}
+        2680    {MATEAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_SISTER]}
+        1269    {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_SISTERA]}
+        944     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_SISTER|INFO_FEMALE_PRONOUN_BROTHER]}
+        739     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_FEMALE_PRONOUN_SHE]}
+        464     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_SHE|INFO_FEMALE_PRONOUN_HE]}
+        458     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYC|INFO_FEMALE_PRONOUN_GIRLC]}
+        400     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BIGBROTHER|INFO_FEMALE_PRONOUN_BIGSISTER]}
+        300     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOY|INFO_FEMALE_PRONOUN_GIRL]}
+        192     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_YING]}
+        192     {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_UNCLE|INFO_FEMALE_PRONOUN_AUNT]}
+        144     {MATEAVATARSEXPRO[INFO_MALE_PRONOUN_BOY|INFO_FEMALE_PRONOUN_GIRL]}
+        80      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_GIRLD|INFO_FEMALE_PRONOUN_BOYD]}
+        80      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_YING|INFO_FEMALE_PRONOUN_KONG]}
+        56      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_YING|INFO_FEMALE_PRONOUN_BROTHER]}
+        54      {MATEAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_FEMALE_PRONOUN_SHE]}
+        48      {PLAYERAVATARSEXPRO[INFO_FEMALE_PRONOUN_SISTER|INFO_MALE_PRONOUN_BROTHER]}
+        36      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HERO|INFO_FEMALE_PRONOUN_HEROINE]}
+        34      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_SHE|INFO_MALE_PRONOUN_HE]}
+        33      {MATEAVATARSEXPRO[INFO_MALE_PRONOUN_BOYD|INFO_FEMALE_PRONOUN_GIRLD]}
+        23      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_MALE_PRONOUN_SHE]}
+        16      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROANDSIS|INFO_FEMALE_PRONOUN_SISANDSIS]}
+        15      {QuestNpcID}
+        14      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_CUTEBIGBROTHER|INFO_FEMALE_PRONOUN_CUTEBIGSISTER]}
+        11      {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_MALE_PRONOUN_BROANDSIS]}
+        8       {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_XIABOY|INFO_FEMALE_PRONOUN_XIAGIRL]}
+        5       {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYE|INFO_FEMALE_PRONOUN_GIRLE]}
+        4       {MATEAVATARSEXPRO[INFO_FEMALE_PRONOUN_HE|INFO_MALE_PRONOUN_SHE]}
+        2       {QuestGatherID}
+        2       {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLA]}
+        1       {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLB]}
+        1       {PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLC]}
+
+Total num of dialogs: 78279 (74999 from storyline, 3280 from avatar description)
+Total num of unique utterances: 77981
+Total num of unique talking roles: 1119
+Average num of turns per dialog: 23.405562155878332
+
+Output avatar at extracted_dialog/avatar_CHS.json
+Output dialog at extracted_dialog/dialog_CHS.json
+~~~
 
 Notes:
 
-1. Each line of the output corresponds to a dialog session, which contains at most n_utter utterances)
-2. There are already extracted outputs in the extracted_dialog folder for 4 languages
+1. output is a json file (could be viewed by most txt viewer), the structure is a list of list, it's a list of dialog and each dialog is then a list of utterance
+2. There are already sampled outputs in the extracted_dialog folder for 3 languages, but you need to run the command yourself in order to get ***FULL dialogs*** (output file size is around 100+MB for each language)
 3. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
-4. There are string variables in the dialogs, which depend on one's main character choice in the game, like the following:
-~~~
-{NICKNAME}
-{PLAYERAVATAR#SEXPRO[INFO_MALE_PRONOUN_BIGBROTHER|INFO_FEMALE_PRONOUN_BIGSISTER]}
-{PLAYERAVATAR#SEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLA]}
-~~~
+4. There are string variables in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
