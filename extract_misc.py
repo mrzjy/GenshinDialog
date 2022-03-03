@@ -56,6 +56,8 @@ class GenshinLoader:
         for idx, info in map_dict.items():
             is_skip = False
             for k, v in info.items():
+                if not v:
+                    info[k] = ""
                 if "text" in k.lower():
                     info[k] = self.map_hash_to_txt.get(str(v), str(v))
                     if k == "NameTextMapHash" and (not info[k] or "test" in info[k]):
@@ -68,6 +70,8 @@ class GenshinLoader:
         # save as excel
         df = pd.DataFrame(data_list, columns=["id"] + columns)
         df.to_excel(out_file, index=False)
+
+        print(f"{len(data_list)} data extracted at {out_file}")
 
     def process_wings(self):
         """ add story context for fly cloaks (wings) """
@@ -181,17 +185,17 @@ if __name__ == '__main__':
     genshin.process_wings()
     genshin.output_excel(
         map_dict=genshin.map_materialId_to_info,
-        out_file=os.path.join(output_dir, "material.xlsx")
+        out_file=os.path.join(output_dir, f"material_{args.lang}.xlsx")
     )
 
     genshin.process_weapons()
     genshin.output_excel(
         map_dict=genshin.map_weaponId_to_info,
-        out_file=os.path.join(output_dir, "weapon.xlsx")
+        out_file=os.path.join(output_dir, f"weapon_{args.lang}.xlsx")
     )
 
     genshin.process_reliquary()
     genshin.output_excel(
         map_dict=genshin.map_relicId_to_info,
-        out_file=os.path.join(output_dir, "reliquary.xlsx")
+        out_file=os.path.join(output_dir, f"reliquary_{args.lang}.xlsx")
     )
