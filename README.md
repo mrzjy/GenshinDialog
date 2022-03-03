@@ -1,6 +1,6 @@
 # GenshinDialog
 
-本项目提供并维护原神对话语料
+本项目抽取原神游戏的对话语料、材料、武器等语料
 
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
@@ -71,7 +71,7 @@ There are scenarios where user chooses different responses and thus lead to diff
 Python 3.6
 ~~~
 
-### Steps
+### Extract dialogs
 1. Get GenshinData from [Dim's project](https://github.com/Dimbreath/GenshinData), you could git clone or download the zip and extract it.
 
 2. Run extract_dialogs.py file
@@ -131,3 +131,12 @@ Notes:
 2. There are already sampled outputs in the extracted_dialog folder for 3 languages, but you need to run the command yourself in order to get ***FULL dialogs*** (output file size is around 100+MB for each language)
 3. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
 4. There are string variables in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
+
+
+### Extract miscellaneous things
+~~~
+// Command line
+python extract_misc.py --repo=PATH/TO/GenshinData --lang=CHS
+
+// This ends in excel files generated in extracted_misc
+~~~
