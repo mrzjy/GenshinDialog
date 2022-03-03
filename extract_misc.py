@@ -34,6 +34,14 @@ class GenshinLoader:
                 del weapon["Id"]
                 self.map_weaponId_to_info[weapon_id] = weapon
 
+        # load reliquary
+        self.map_relicId_to_info = {}
+        with open(os.path.join(self.repo, "ExcelBinOutput", "ReliquaryExcelConfigData.json"), "r", encoding="utf-8") as f:
+            relic_list = json.load(f)
+            for relic in relic_list:
+                relic_id = re.match(".*\\_(\d+\\_\d+)$", relic["Icon"]).group(1)
+                self.map_relicId_to_info[relic_id] = relic
+
     def output_excel(self, map_dict, out_file, skip_columns=None):
         columns = set()
         for mid, info in map_dict.items():
@@ -64,22 +72,23 @@ class GenshinLoader:
     def process_wings(self):
         """ add story context for fly cloaks (wings) """
         all_readable_files = list(glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*")))
-        wing_story_files = [f for f in all_readable_files if "Wings" in f]
-        for wing_story_file in wing_story_files:
+        files = [f for f in all_readable_files if "Wings" in f]
+        for wing_story_file in files:
             material_id = re.match(".+Wings(\d+).txt", wing_story_file).group(1)
             with open(wing_story_file, "r", encoding="utf-8") as g:
                 story = "".join(g.readlines())
             self.map_materialId_to_info[int(material_id)]["ReadableText"] = story
 
     def process_weapons(self):
+        """ add story context and 5-level weapon skill descriptions """
         all_readable_files = list(glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*")))
-        weapon_files = [f for f in all_readable_files if "Weapon" in f]
+        files = [f for f in all_readable_files if "Weapon" in f]
         # load story
-        for weapon_file in weapon_files:
-            weapon_id = int(re.match(".+Weapon(\d+).txt", weapon_file).group(1))
+        for weapon_file in files:
+            idx = int(re.match(".+Weapon(\d+).txt", weapon_file).group(1))
             with open(weapon_file, "r", encoding="utf-8") as g:
                 story = "".join(g.readlines()).strip("\n")
-            self.map_weaponId_to_info[weapon_id]["ReadableText"] = story
+            self.map_weaponId_to_info[idx]["ReadableText"] = story
 
         # load skill description
         map_skillId_to_affixList = {}
@@ -111,19 +120,21 @@ class GenshinLoader:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--repo', default='PATH_TO_GENSHINDATA', type=str, required=True, help='data dir')
+    parser.add_argument('--repo', default='PATH_TO_GENSHINDATA', type=str, help='data dir')
     parser.add_argument('--lang', default='CHS', type=str, help='language type')
     args = parser.parse_args()
+
+    output_dir = "extracted_misc"
 
     genshin = GenshinLoader(repo=args.repo, lang=args.lang)
     genshin.process_wings()
     genshin.output_excel(
         map_dict=genshin.map_materialId_to_info,
-        out_file="extracted_misc/material.xlsx"
+        out_file=os.path.join(output_dir, "material.xlsx")
     )
 
     genshin.process_weapons()
     genshin.output_excel(
         map_dict=genshin.map_weaponId_to_info,
-        out_file="extracted_misc/weapon.xlsx"
+        out_file=os.path.join(output_dir, "weapon.xlsx")
     )

@@ -1,5 +1,7 @@
 import json
 import argparse
+import os
+
 from utils import GenshinLoader
 
 
@@ -17,7 +19,8 @@ if __name__ == '__main__':
     output_dialog_list = genshin.process_dialog(max_utter=args.n_utter)
 
     # output avatar
-    output_file = "extracted_dialog/avatar_{}.json".format(args.lang)
+    output_dir = "extracted_dialog"
+    output_file = os.path.join(output_dir, "avatar_{}.json".format(args.lang))
     with open(output_file, "w", encoding='utf-8') as f:
         json_file = json.dumps(genshin.map_avatar_to_info, sort_keys=True, indent=4, ensure_ascii=False)
         print(json_file, file=f)
@@ -25,7 +28,7 @@ if __name__ == '__main__':
 
     # output dialog
     if len(output_dialog_list):
-        output_file = "extracted_dialog/dialog_{}.json".format(args.lang)
+        output_file = os.path.join(output_dir, "dialog_{}.json".format(args.lang))
         with open(output_file, "w", encoding='utf-8') as f:
             json.dump(output_dialog_list, f, indent=4, ensure_ascii=False)
         print("Output dialog at {}".format(output_file))
