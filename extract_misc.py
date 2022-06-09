@@ -21,8 +21,8 @@ class GenshinLoader:
         with open(os.path.join(repo, "ExcelBinOutput", "MaterialExcelConfigData.json"), "r", encoding="utf-8") as f:
             material_list = json.load(f)
             for material in material_list:
-                material_id = material["Id"]
-                del material["Id"]
+                material_id = material["id"]
+                del material["id"]
                 self.map_materialId_to_info[material_id] = material
 
         # load weapon
@@ -30,8 +30,8 @@ class GenshinLoader:
         with open(os.path.join(self.repo, "ExcelBinOutput", "WeaponExcelConfigData.json"), "r", encoding="utf-8") as f:
             weapon_list = json.load(f)
             for weapon in weapon_list:
-                weapon_id = weapon["Id"]
-                del weapon["Id"]
+                weapon_id = weapon["id"]
+                del weapon["id"]
                 self.map_weaponId_to_info[weapon_id] = weapon
 
         # load reliquary
@@ -39,7 +39,7 @@ class GenshinLoader:
         with open(os.path.join(self.repo, "ExcelBinOutput", "ReliquaryExcelConfigData.json"), "r", encoding="utf-8") as f:
             relic_list = json.load(f)
             for relic in relic_list:
-                relic_id = relic["Id"]
+                relic_id = relic["id"]
                 self.map_relicId_to_info[relic_id] = relic
 
     def output_excel(self, map_dict, out_file, skip_columns=None):
@@ -60,7 +60,7 @@ class GenshinLoader:
                     info[k] = ""
                 if "text" in k.lower():
                     info[k] = self.map_hash_to_txt.get(str(v), str(v))
-                    if k == "NameTextMapHash" and (not info[k] or "test" in info[k]):
+                    if k == "nameTextMapHash" and (not info[k] or "test" in info[k]):
                         is_skip = True
                         break
             if is_skip:
@@ -100,26 +100,26 @@ class GenshinLoader:
         with open(os.path.join(self.repo, "ExcelBinOutput", "EquipAffixExcelConfigData.json"), "r", encoding="utf-8") as f:
             skill_list = json.load(f)
             for skill in skill_list:
-                map_affixId_to_info[skill["AffixId"]] = skill
-                if skill["Id"] not in map_skillId_to_affixList:
-                    map_skillId_to_affixList[skill["Id"]] = []
-                map_skillId_to_affixList[skill["Id"]] += [skill["AffixId"]]
+                map_affixId_to_info[skill["affixId"]] = skill
+                if skill["id"] not in map_skillId_to_affixList:
+                    map_skillId_to_affixList[skill["id"]] = []
+                map_skillId_to_affixList[skill["id"]] += [skill["affixId"]]
 
         # mix skill descriptions (from level 1 to level 5)
         for weapon_id, info in self.map_weaponId_to_info.items():
-            skill_id = info["SkillAffix"][0]
+            skill_id = info["skillAffix"][0]
             if skill_id in map_skillId_to_affixList:
                 affixes = map_skillId_to_affixList[skill_id]
-                name_hash = str(map_affixId_to_info[affixes[0]]["NameTextMapHash"])
+                name_hash = str(map_affixId_to_info[affixes[0]]["nameTextMapHash"])
                 skill_name = self.map_hash_to_txt.get(name_hash, "")
                 skill_descs = []
                 for aid in affixes:
-                    desc_hash = str(map_affixId_to_info[aid]["DescTextMapHash"])
+                    desc_hash = str(map_affixId_to_info[aid]["descTextMapHash"])
                     skill_desc = self.map_hash_to_txt.get(desc_hash, "")
                     skill_descs.append(re.sub("(<color=#99FFFFFF>|</color>)", "", skill_desc))
-                self.map_weaponId_to_info[weapon_id]["SkillName"] = skill_name
-                self.map_weaponId_to_info[weapon_id]["SkillDesc"] = "\n".join(skill_descs)
-            del self.map_weaponId_to_info[weapon_id]["SkillAffix"]
+                self.map_weaponId_to_info[weapon_id]["skillName"] = skill_name
+                self.map_weaponId_to_info[weapon_id]["skillDesc"] = "\n".join(skill_descs)
+            del self.map_weaponId_to_info[weapon_id]["skillAffix"]
 
     def process_reliquary(self):
         """ add story context and set skill descriptions """
@@ -135,7 +135,7 @@ class GenshinLoader:
                 continue
             map_icon_to_story[idx] = story
         for idx, info in self.map_relicId_to_info.items():
-            icon = re.match(".+_(\d+_\d+)$", info["Icon"]).group(1)
+            icon = re.match(".+_(\d+_\d+)$", info["icon"]).group(1)
             if icon not in map_icon_to_story:
                 continue
             self.map_relicId_to_info[idx]["ReadableText"] = map_icon_to_story[icon]
@@ -146,10 +146,10 @@ class GenshinLoader:
         with open(os.path.join(self.repo, "ExcelBinOutput", "EquipAffixExcelConfigData.json"), "r",
                   encoding="utf-8") as f:
             for skill in json.load(f):
-                map_affixId_to_info[skill["AffixId"]] = skill
-                if skill["Id"] not in map_skillId_to_affixList:
-                    map_skillId_to_affixList[skill["Id"]] = []
-                map_skillId_to_affixList[skill["Id"]] += [skill["AffixId"]]
+                map_affixId_to_info[skill["affixId"]] = skill
+                if skill["id"] not in map_skillId_to_affixList:
+                    map_skillId_to_affixList[skill["id"]] = []
+                map_skillId_to_affixList[skill["id"]] += [skill["affixId"]]
 
         # load relic set
         with open(os.path.join(self.repo, "ExcelBinOutput", "ReliquarySetExcelConfigData.json"), "r",
@@ -159,18 +159,17 @@ class GenshinLoader:
                     continue
                 skill_id = relic_set["EquipAffixId"]
                 affixes = map_skillId_to_affixList[skill_id]
-                name_hash = str(map_affixId_to_info[affixes[0]]["NameTextMapHash"])
+                name_hash = str(map_affixId_to_info[affixes[0]]["nameTextMapHash"])
                 skill_name = self.map_hash_to_txt.get(name_hash, "")
                 skill_descs = []
                 for aid in affixes:
-                    desc_hash = str(map_affixId_to_info[aid]["DescTextMapHash"])
+                    desc_hash = str(map_affixId_to_info[aid]["descTextMapHash"])
                     skill_desc = self.map_hash_to_txt.get(desc_hash, "")
                     skill_descs.append(skill_desc)
 
-                for idx in relic_set["ContainsList"]:
-                    self.map_relicId_to_info[idx]["SetSkillName"] = skill_name
-                    self.map_relicId_to_info[idx]["SetSkillDesc"] = "\n".join(skill_descs)
-
+                for idx in relic_set["containsList"]:
+                    self.map_relicId_to_info[idx]["setSkillName"] = skill_name
+                    self.map_relicId_to_info[idx]["setSkillDesc"] = "\n".join(skill_descs)
 
 
 if __name__ == '__main__':
