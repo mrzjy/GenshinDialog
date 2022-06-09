@@ -216,7 +216,7 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
                     if len(splits) != 2:
                         splits = [splits[0], "：".join(splits[1:])]
 
-                    sub_dialog.append("{}\t{}".format(splits[0] if splits[0] != "{NICKNAME}" else "PLAYER", splits[1]))
+                    sub_dialog.append("{}\t{}".format(splits[0] if splits[0] != "{NICKNAME}" else "Traveller", splits[1]))
 
                 if len(sub_dialog) > max_utter:
                     for i in range(len(sub_dialog) - max_utter):
@@ -230,10 +230,10 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
 
 def get_role(uid, map_npcId_to_name, map_id_to_utterance, lang="CHS"):
     role = "unknown"
-    if "Id" in map_id_to_utterance[uid]["talkRole"] and map_id_to_utterance[uid]["talkRole"]["id"] != "":
+    if "_id" in map_id_to_utterance[uid]["talkRole"] and map_id_to_utterance[uid]["talkRole"]["_id"] != "":
         role = map_npcId_to_name.get(
-            str(map_id_to_utterance[uid]["talkRole"]["id"]), str(map_id_to_utterance[uid]["talkRole"]["id"]))
-    if "Type" in map_id_to_utterance[uid]["talkRole"] and \
-            map_id_to_utterance[uid]["talkRole"]["type"] == "TALK_ROLE_PLAYER":
+            str(map_id_to_utterance[uid]["talkRole"]["_id"]), str(map_id_to_utterance[uid]["talkRole"]["_id"]))
+    if "_type" in map_id_to_utterance[uid]["talkRole"] and \
+            map_id_to_utterance[uid]["talkRole"]["_type"] == "TALK_ROLE_PLAYER":
         role = "Traveller" if lang != "CHS" else "旅行者"
     return role
