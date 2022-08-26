@@ -4,17 +4,21 @@ import os
 from collections import Counter
 
 
-regexp_noise = re.compile(r'<[^>]+>|#')
+regexp_noise = re.compile(r"<[^>]+>|#")
 regexp_string_var = "\\{[a-zA-Z_\\[\\]\\|]+\\}"
 
 
 class GenshinLoader:
     def __init__(self, repo: str, lang="CHS"):
-        """ load Genshin Data. """
+        """load Genshin Data."""
         self.lang = lang
 
         # load textMap
-        with open(os.path.join(repo, "TextMap/TextMap{}.json".format(lang)), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(repo, "TextMap/TextMap{}.json".format(lang)),
+            "r",
+            encoding="utf-8",
+        ) as f:
             self.map_hash_to_txt = json.load(f)
 
         # load avatar info
@@ -22,31 +26,41 @@ class GenshinLoader:
 
         # load npc info
         self.map_npcId_to_name = {}
-        with open(os.path.join(repo, "ExcelBinOutput/NpcExcelConfigData.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(repo, "ExcelBinOutput/NpcExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             npcList = json.load(f)
             for npc in npcList:
                 npc_id = str(npc["id"])
                 self.map_npcId_to_name[npc_id] = self.map_hash_to_txt.get(
-                    str(npc["nameTextMapHash"]), str(npc["nameTextMapHash"]))
+                    str(npc["nameTextMapHash"]), str(npc["nameTextMapHash"])
+                )
 
         # load raw dialog
-        with open(os.path.join(repo, "ExcelBinOutput/DialogExcelConfigData.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(repo, "ExcelBinOutput/DialogExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             self.raw_dialog_list = json.load(f)
 
     def process_dialog(self, max_utter=1000):
-        """ generate readable in-game conversations """
+        """generate readable in-game conversations"""
         # from story line
         dialog_list = extract_dialogs_from_storylines(
             self.raw_dialog_list,
             self.map_hash_to_txt,
             self.map_npcId_to_name,
             max_utter,
-            self.lang)
+            self.lang,
+        )
 
         # from avatar introduction
         extra_dialog_list = extract_dialogs_from_avatarInfo(
-            max_utter,
-            self.map_avatar_to_info)
+            max_utter, self.map_avatar_to_info
+        )
         dialog_list.extend(extra_dialog_list)
 
         # count statistics
@@ -67,8 +81,10 @@ class GenshinLoader:
         for string_var, count in string_var_counter.most_common():
             print(f"\t{count}\t{string_var}")
 
-        print(f"\nTotal num of dialogs: {len(dialog_list)} "
-              f"({len(dialog_list) - len(extra_dialog_list)} storyline + {len(extra_dialog_list)} avatar description)")
+        print(
+            f"\nTotal num of dialogs: {len(dialog_list)} "
+            f"({len(dialog_list) - len(extra_dialog_list)} storyline + {len(extra_dialog_list)} avatar description)"
+        )
         print(f"Total num of unique utterances: {len(sentence_set)}")
         print(f"Total num of unique talking roles: {len(speaker_set)}")
         print(f"Average num of turns per dialog: {sum(num_turns) / len(num_turns)}")
@@ -77,14 +93,18 @@ class GenshinLoader:
 
 
 def remove_tags(text):
-    return regexp_noise.sub('', text)
+    return regexp_noise.sub("", text)
 
 
 def get_avatar_info(repo, textMapHash):
     avatar2info = {}
     id2avatar = {}
 
-    with open(os.path.join(repo, "ExcelBinOutput/AvatarExcelConfigData.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(repo, "ExcelBinOutput/AvatarExcelConfigData.json"),
+        "r",
+        encoding="utf-8",
+    ) as f:
         infoList = json.load(f)
         for info in infoList:
             avatar_name = textMapHash.get(str(info["nameTextMapHash"]), "")
@@ -95,35 +115,62 @@ def get_avatar_info(repo, textMapHash):
             avatar2info[avatar_name] = {"desc": avatar_desc, "sayings": [], "story": []}
             id2avatar[avatar_id] = avatar_name
 
-    with open(os.path.join(repo, "ExcelBinOutput/FetterInfoExcelConfigData.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(repo, "ExcelBinOutput/FetterInfoExcelConfigData.json"),
+        "r",
+        encoding="utf-8",
+    ) as f:
         infoList = json.load(f)
         for info in infoList:
             avatar_name = id2avatar[str(info["avatarId"])]
             if avatar_name not in avatar2info:
                 continue
-            avatar2info[avatar_name]["native"] = textMapHash.get(str(info["avatarNativeTextMapHash"]), "")
-            avatar2info[avatar_name]["title"] = textMapHash.get(str(info["avatarTitleTextMapHash"]), "")
+            avatar2info[avatar_name]["native"] = textMapHash.get(
+                str(info["avatarNativeTextMapHash"]), ""
+            )
+            avatar2info[avatar_name]["title"] = textMapHash.get(
+                str(info["avatarTitleTextMapHash"]), ""
+            )
             avatar2info[avatar_name]["constellation"] = textMapHash.get(
-                str(info["avatarConstellationBeforTextMapHash"]), "")
-            avatar2info[avatar_name]["element"] = textMapHash.get(str(info["avatarVisionBeforTextMapHash"]), "")
+                str(info["avatarConstellationBeforTextMapHash"]), ""
+            )
+            avatar2info[avatar_name]["element"] = textMapHash.get(
+                str(info["avatarVisionBeforTextMapHash"]), ""
+            )
             if "InfoBirthMonth" in info and "InfoBirthDay" in info:
-                avatar2info[avatar_name]["birthday"] = "{:d}.{:d}".format(info["InfoBirthMonth"], info["InfoBirthDay"])
+                avatar2info[avatar_name]["birthday"] = "{:d}.{:d}".format(
+                    info["InfoBirthMonth"], info["InfoBirthDay"]
+                )
 
-    with open(os.path.join(repo, "ExcelBinOutput/FettersExcelConfigData.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(repo, "ExcelBinOutput/FettersExcelConfigData.json"),
+        "r",
+        encoding="utf-8",
+    ) as f:
         infoList = json.load(f)
         for info in infoList:
             avatar_name = id2avatar[str(info["avatarId"])]
-            avatar2info[avatar_name]["sayings"] += ["{}\t{}".format(
-                textMapHash.get(str(info["voiceTitleTextMapHash"]), ""),
-                textMapHash.get(str(info["voiceFileTextTextMapHash"]), ""))]
+            avatar2info[avatar_name]["sayings"] += [
+                "{}\t{}".format(
+                    textMapHash.get(str(info["voiceTitleTextMapHash"]), ""),
+                    textMapHash.get(str(info["voiceFileTextTextMapHash"]), ""),
+                )
+            ]
 
-    with open(os.path.join(repo, "ExcelBinOutput/FetterStoryExcelConfigData.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(repo, "ExcelBinOutput/FetterStoryExcelConfigData.json"),
+        "r",
+        encoding="utf-8",
+    ) as f:
         infoList = json.load(f)
         for info in infoList:
             avatar_name = id2avatar[str(info["avatarId"])]
-            avatar2info[avatar_name]["story"] += ["{}\t{}".format(
-                textMapHash.get(str(info["storyTitleTextMapHash"]), ""),
-                textMapHash.get(str(info["storyContextTextMapHash"]), ""))]
+            avatar2info[avatar_name]["story"] += [
+                "{}\t{}".format(
+                    textMapHash.get(str(info["storyTitleTextMapHash"]), ""),
+                    textMapHash.get(str(info["storyContextTextMapHash"]), ""),
+                )
+            ]
 
     # cleaning
     for avatar_name, infoDict in avatar2info.items():
@@ -140,7 +187,9 @@ def get_avatar_info(repo, textMapHash):
     return avatar2info
 
 
-def extract_dialogs_from_storylines(raw_dialog_list, map_hash_to_txt, map_npcId_to_name, max_utter, lang):
+def extract_dialogs_from_storylines(
+    raw_dialog_list, map_hash_to_txt, map_npcId_to_name, max_utter, lang
+):
     map_id_to_utterance = {}
 
     # dialogs from story lines
@@ -216,24 +265,38 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
                     if len(splits) != 2:
                         splits = [splits[0], "：".join(splits[1:])]
 
-                    sub_dialog.append("{}\t{}".format(splits[0] if splits[0] != "{NICKNAME}" else "Traveller", splits[1]))
+                    sub_dialog.append(
+                        "{}\t{}".format(
+                            splits[0] if splits[0] != "{NICKNAME}" else "Traveller",
+                            splits[1],
+                        )
+                    )
 
                 if len(sub_dialog) > max_utter:
                     for i in range(len(sub_dialog) - max_utter):
-                        dialogs.append(sub_dialog[i:i+max_utter])
+                        dialogs.append(sub_dialog[i : i + max_utter])
                 else:
                     dialogs.append(sub_dialog)
                 continue
-            dialogs.append(["Traveller\t{}".format(topic), "{}\t{}".format(avatar, content)])
+            dialogs.append(
+                ["Traveller\t{}".format(topic), "{}\t{}".format(avatar, content)]
+            )
     return dialogs
 
 
 def get_role(uid, map_npcId_to_name, map_id_to_utterance, lang="CHS"):
     role = "unknown"
-    if "_id" in map_id_to_utterance[uid]["talkRole"] and map_id_to_utterance[uid]["talkRole"]["_id"] != "":
+    if (
+        "_id" in map_id_to_utterance[uid]["talkRole"]
+        and map_id_to_utterance[uid]["talkRole"]["_id"] != ""
+    ):
         role = map_npcId_to_name.get(
-            str(map_id_to_utterance[uid]["talkRole"]["_id"]), str(map_id_to_utterance[uid]["talkRole"]["_id"]))
-    if "_type" in map_id_to_utterance[uid]["talkRole"] and \
-            map_id_to_utterance[uid]["talkRole"]["_type"] == "TALK_ROLE_PLAYER":
+            str(map_id_to_utterance[uid]["talkRole"]["_id"]),
+            str(map_id_to_utterance[uid]["talkRole"]["_id"]),
+        )
+    if (
+        "_type" in map_id_to_utterance[uid]["talkRole"]
+        and map_id_to_utterance[uid]["talkRole"]["_type"] == "TALK_ROLE_PLAYER"
+    ):
         role = "Traveller" if lang != "CHS" else "旅行者"
     return role

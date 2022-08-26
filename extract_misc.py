@@ -8,17 +8,25 @@ import pandas as pd
 
 class GenshinLoader:
     def __init__(self, repo: str, lang="CHS"):
-        """ load Genshin Data. """
+        """load Genshin Data."""
         self.repo = repo
         self.lang = lang
 
         # load textMap
-        with open(os.path.join(repo, "TextMap", "TextMap{}.json".format(lang)), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(repo, "TextMap", "TextMap{}.json".format(lang)),
+            "r",
+            encoding="utf-8",
+        ) as f:
             self.map_hash_to_txt = json.load(f)
 
         # load material
         self.map_materialId_to_info = {}
-        with open(os.path.join(repo, "ExcelBinOutput", "MaterialExcelConfigData.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(repo, "ExcelBinOutput", "MaterialExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             material_list = json.load(f)
             for material in material_list:
                 material_id = material["id"]
@@ -27,7 +35,11 @@ class GenshinLoader:
 
         # load weapon
         self.map_weaponId_to_info = {}
-        with open(os.path.join(self.repo, "ExcelBinOutput", "WeaponExcelConfigData.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(self.repo, "ExcelBinOutput", "WeaponExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             weapon_list = json.load(f)
             for weapon in weapon_list:
                 weapon_id = weapon["id"]
@@ -36,7 +48,11 @@ class GenshinLoader:
 
         # load reliquary
         self.map_relicId_to_info = {}
-        with open(os.path.join(self.repo, "ExcelBinOutput", "ReliquaryExcelConfigData.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(self.repo, "ExcelBinOutput", "ReliquaryExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             relic_list = json.load(f)
             for relic in relic_list:
                 relic_id = relic["id"]
@@ -74,8 +90,10 @@ class GenshinLoader:
         print(f"{len(data_list)} data extracted at {out_file}")
 
     def process_wings(self):
-        """ add story context for fly cloaks (wings) """
-        all_readable_files = list(glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*")))
+        """add story context for fly cloaks (wings)"""
+        all_readable_files = list(
+            glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*"))
+        )
         files = [f for f in all_readable_files if "Wings" in f]
         for wing_story_file in files:
             material_id = re.match(".+Wings(\d+).txt", wing_story_file).group(1)
@@ -84,8 +102,10 @@ class GenshinLoader:
             self.map_materialId_to_info[int(material_id)]["ReadableText"] = story
 
     def process_weapons(self):
-        """ add story context and 5-level weapon skill descriptions """
-        all_readable_files = list(glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*")))
+        """add story context and 5-level weapon skill descriptions"""
+        all_readable_files = list(
+            glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*"))
+        )
         files = [f for f in all_readable_files if "Weapon" in f]
         # load story
         for weapon_file in files:
@@ -97,7 +117,11 @@ class GenshinLoader:
         # load skill description
         map_skillId_to_affixList = {}
         map_affixId_to_info = {}
-        with open(os.path.join(self.repo, "ExcelBinOutput", "EquipAffixExcelConfigData.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(self.repo, "ExcelBinOutput", "EquipAffixExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             skill_list = json.load(f)
             for skill in skill_list:
                 map_affixId_to_info[skill["affixId"]] = skill
@@ -116,14 +140,20 @@ class GenshinLoader:
                 for aid in affixes:
                     desc_hash = str(map_affixId_to_info[aid]["descTextMapHash"])
                     skill_desc = self.map_hash_to_txt.get(desc_hash, "")
-                    skill_descs.append(re.sub("(<color=#99FFFFFF>|</color>)", "", skill_desc))
+                    skill_descs.append(
+                        re.sub("(<color=#99FFFFFF>|</color>)", "", skill_desc)
+                    )
                 self.map_weaponId_to_info[weapon_id]["skillName"] = skill_name
-                self.map_weaponId_to_info[weapon_id]["skillDesc"] = "\n".join(skill_descs)
+                self.map_weaponId_to_info[weapon_id]["skillDesc"] = "\n".join(
+                    skill_descs
+                )
             del self.map_weaponId_to_info[weapon_id]["skillAffix"]
 
     def process_reliquary(self):
-        """ add story context and set skill descriptions """
-        all_readable_files = list(glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*")))
+        """add story context and set skill descriptions"""
+        all_readable_files = list(
+            glob.iglob(os.path.join(self.repo, "Readable", self.lang, "*"))
+        )
         files = [f for f in all_readable_files if "Relic" in f]
         # load story
         map_icon_to_story = {}
@@ -143,8 +173,11 @@ class GenshinLoader:
         # load skill description
         map_skillId_to_affixList = {}
         map_affixId_to_info = {}
-        with open(os.path.join(self.repo, "ExcelBinOutput", "EquipAffixExcelConfigData.json"), "r",
-                  encoding="utf-8") as f:
+        with open(
+            os.path.join(self.repo, "ExcelBinOutput", "EquipAffixExcelConfigData.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
             for skill in json.load(f):
                 map_affixId_to_info[skill["affixId"]] = skill
                 if skill["id"] not in map_skillId_to_affixList:
@@ -152,8 +185,13 @@ class GenshinLoader:
                 map_skillId_to_affixList[skill["id"]] += [skill["affixId"]]
 
         # load relic set
-        with open(os.path.join(self.repo, "ExcelBinOutput", "ReliquarySetExcelConfigData.json"), "r",
-                  encoding="utf-8") as f:
+        with open(
+            os.path.join(
+                self.repo, "ExcelBinOutput", "ReliquarySetExcelConfigData.json"
+            ),
+            "r",
+            encoding="utf-8",
+        ) as f:
             for relic_set in json.load(f):
                 if "EquipAffixId" not in relic_set:
                     continue
@@ -169,13 +207,17 @@ class GenshinLoader:
 
                 for idx in relic_set["containsList"]:
                     self.map_relicId_to_info[idx]["setSkillName"] = skill_name
-                    self.map_relicId_to_info[idx]["setSkillDesc"] = "\n".join(skill_descs)
+                    self.map_relicId_to_info[idx]["setSkillDesc"] = "\n".join(
+                        skill_descs
+                    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--repo', default='PATH_TO_GENSHINDATA', type=str, help='data dir')
-    parser.add_argument('--lang', default='CHS', type=str, help='language type')
+    parser.add_argument(
+        "--repo", default="PATH_TO_GENSHINDATA", type=str, help="data dir"
+    )
+    parser.add_argument("--lang", default="CHS", type=str, help="language type")
     args = parser.parse_args()
 
     output_dir = "extracted_misc"
@@ -184,17 +226,17 @@ if __name__ == '__main__':
     genshin.process_wings()
     genshin.output_excel(
         map_dict=genshin.map_materialId_to_info,
-        out_file=os.path.join(output_dir, f"material_{args.lang}.xlsx")
+        out_file=os.path.join(output_dir, f"material_{args.lang}.xlsx"),
     )
 
     genshin.process_weapons()
     genshin.output_excel(
         map_dict=genshin.map_weaponId_to_info,
-        out_file=os.path.join(output_dir, f"weapon_{args.lang}.xlsx")
+        out_file=os.path.join(output_dir, f"weapon_{args.lang}.xlsx"),
     )
 
     genshin.process_reliquary()
     genshin.output_excel(
         map_dict=genshin.map_relicId_to_info,
-        out_file=os.path.join(output_dir, f"reliquary_{args.lang}.xlsx")
+        out_file=os.path.join(output_dir, f"reliquary_{args.lang}.xlsx"),
     )
