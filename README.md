@@ -4,14 +4,14 @@
 
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
-- Current game version 3.0
+- Current game version 3.1
 
 | Stat  |  Count  | 
 :-----------: |:-------:|
-| Total num of roles (speakers)   |  1,691  |
-| Total num of utterances  | 112,482 |
-| Total num of dialog sessions  | 90,583  |
-| Average num of turns per dialog  |  25.18  |
+| Total num of roles (speakers)   |  1,799  |
+| Total num of utterances  | 121,645 |
+| Total num of dialog sessions  | 93,859  |
+| Average num of turns per dialog  |  25.82  |
 
 - Note
 
