@@ -137,9 +137,9 @@ def get_avatar_info(repo, textMapHash):
             avatar2info[avatar_name]["element"] = textMapHash.get(
                 str(info["avatarVisionBeforTextMapHash"]), ""
             )
-            if "InfoBirthMonth" in info and "InfoBirthDay" in info:
+            if "infoBirthMonth" in info and "infoBirthDay" in info:
                 avatar2info[avatar_name]["birthday"] = "{:d}.{:d}".format(
-                    info["InfoBirthMonth"], info["InfoBirthDay"]
+                    info["infoBirthMonth"], info["infoBirthDay"]
                 )
 
     with open(
@@ -287,16 +287,16 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
 def get_role(uid, map_npcId_to_name, map_id_to_utterance, lang="CHS"):
     role = "unknown"
     if (
-        "_id" in map_id_to_utterance[uid]["talkRole"]
-        and map_id_to_utterance[uid]["talkRole"]["_id"] != ""
+        "id" in map_id_to_utterance[uid]["talkRole"]
+        and map_id_to_utterance[uid]["talkRole"]["id"] != ""
     ):
         role = map_npcId_to_name.get(
-            str(map_id_to_utterance[uid]["talkRole"]["_id"]),
-            str(map_id_to_utterance[uid]["talkRole"]["_id"]),
+            str(map_id_to_utterance[uid]["talkRole"]["id"]),
+            str(map_id_to_utterance[uid]["talkRole"]["id"])
         )
     if (
-        "_type" in map_id_to_utterance[uid]["talkRole"]
-        and map_id_to_utterance[uid]["talkRole"]["_type"] == "TALK_ROLE_PLAYER"
+        "type" in map_id_to_utterance[uid]["talkRole"]
+        and map_id_to_utterance[uid]["talkRole"]["type"] == "TALK_ROLE_PLAYER"
     ):
         role = "Traveller" if lang != "CHS" else "旅行者"
     return role
