@@ -43,6 +43,6 @@ if __name__ == "__main__":
     if len(output_dialog_list):
         output_file = os.path.join(output_dir, "dialog_{}.jsonl".format(args.lang))
         with open(output_file, "w", encoding="utf-8") as f:
-            for dialog in output_dialog_list[:10]:
+            for dialog in output_dialog_list:
                 print(json.dumps(dialog, ensure_ascii=False), file=f)
         print("Output dialog at {}".format(output_file))
