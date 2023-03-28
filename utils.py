@@ -59,7 +59,7 @@ class GenshinLoader:
 
         # from avatar introduction
         extra_dialog_list = extract_dialogs_from_avatarInfo(
-            max_utter, self.map_avatar_to_info
+            max_utter, self.map_avatar_to_info, self.lang
         )
         dialog_list.extend(extra_dialog_list)
 
@@ -93,7 +93,8 @@ class GenshinLoader:
 
 
 def remove_tags(text):
-    return regexp_noise.sub("", text)
+    text = regexp_noise.sub("", text)
+    return text.replace("\\n", "\n")
 
 
 def get_avatar_info(repo, textMapHash):
@@ -234,8 +235,9 @@ def extract_dialogs_from_storylines(
             if sentence_hash not in map_hash_to_txt:
                 continue
             sentence = remove_tags(map_hash_to_txt[sentence_hash])
-
-            speaker = get_role(uid, map_npcId_to_name, map_id_to_utterance, lang)
+            speaker = get_role(
+                uid, map_npcId_to_name, map_id_to_utterance, map_hash_to_txt, lang
+            )
             speaker_set.add(speaker)
             if speaker == "unknown" or speaker == "":
                 role_hash = str(map_id_to_utterance[uid]["talkRoleNameTextMapHash"])
@@ -249,17 +251,19 @@ def extract_dialogs_from_storylines(
     return dialog_list
 
 
-def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
+def extract_dialogs_from_avatarInfo(max_utter, avatar2info, lang):
     """We treat character sayings as dialog between traveller and character"""
     dialogs = []
+    role = "Traveller" if lang != "CHS" else "旅行者"
     for avatar, info in avatar2info.items():
         sayings_list = info.get("sayings", [])
         for sayings in sayings_list:
             topic, content = sayings.split("\t")
+            content = content.replace("\\n", "\n")
             if "{NICKNAME}" in content and "\\n" in content:
                 # sayings of traveller involve paimon, which can be further splitted as dialogs
                 sub_dialog = []
-                for turn in content.split("\\n"):
+                for turn in content.split("\n"):
                     turn = turn.replace(": ", "：")
                     splits = turn.split("：")
                     if len(splits) != 2:
@@ -267,7 +271,7 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
 
                     sub_dialog.append(
                         "{}\t{}".format(
-                            splits[0] if splits[0] != "{NICKNAME}" else "Traveller",
+                            splits[0] if splits[0] != "{NICKNAME}" else role,
                             splits[1],
                         )
                     )
@@ -279,24 +283,26 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info):
                     dialogs.append(sub_dialog)
                 continue
             dialogs.append(
-                ["Traveller\t{}".format(topic), "{}\t{}".format(avatar, content)]
+                [f"{role}\t{topic}", f"{avatar}\t{content}"]
             )
     return dialogs
 
 
-def get_role(uid, map_npcId_to_name, map_id_to_utterance, lang="CHS"):
+def get_role(uid, map_npcId_to_name, map_id_to_utterance, map_hash_to_txt, lang="CHS"):
     role = "unknown"
-    if (
-        "_id" in map_id_to_utterance[uid]["talkRole"]
-        and map_id_to_utterance[uid]["talkRole"]["_id"] != ""
-    ):
+    if map_id_to_utterance[uid]["talkRole"].get("id"):
         role = map_npcId_to_name.get(
-            str(map_id_to_utterance[uid]["talkRole"]["_id"]),
-            str(map_id_to_utterance[uid]["talkRole"]["_id"]),
+            str(map_id_to_utterance[uid]["talkRole"]["id"]),
+            str(map_id_to_utterance[uid]["talkRole"]["id"]),
         )
+    else:
+        role = map_hash_to_txt.get(
+            str(map_id_to_utterance[uid]["talkRoleNameTextMapHash"]), role
+        )
+
     if (
-        "_type" in map_id_to_utterance[uid]["talkRole"]
-        and map_id_to_utterance[uid]["talkRole"]["_type"] == "TALK_ROLE_PLAYER"
+        "type" in map_id_to_utterance[uid]["talkRole"]
+        and map_id_to_utterance[uid]["talkRole"]["type"] == "TALK_ROLE_PLAYER"
     ):
         role = "Traveller" if lang != "CHS" else "旅行者"
     return role

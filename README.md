@@ -4,13 +4,13 @@
 
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
-- Current game version 3.1
+- Current game version 3.5
 
 | Stat  |  Count  | 
 :-----------: |:-------:|
-| Total num of roles (speakers)   |  1,799  |
-| Total num of utterances  | 121,645 |
-| Total num of dialog sessions  | 93,859  |
+| Total num of roles (speakers)   |  1,998  |
+| Total num of utterances  | 140,873 |
+| Total num of dialog sessions  | 100,939 |
 | Average num of turns per dialog  |  25.82  |
 
 - Note
@@ -74,7 +74,9 @@ Python 3.6
 ### Extract dialogs
 1. Get GenshinData from [Dim's project](https://github.com/Dimbreath/GenshinData), you could git clone or download the zip and extract it.
 
-2. Run extract_dialogs.py file
+**Note**: Search for yourself where Dim's project data is... (No longer in Github)
+
+3. Run extract_dialogs.py file
 ~~~
 // Command line
 python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS
