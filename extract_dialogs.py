@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--repo",
-        default="PATH_TO_GENSHINDATA",
+        default="Path/To/AnimeGameData",
         type=str,
         required=True,
         help="data dir",
@@ -41,7 +41,8 @@ if __name__ == "__main__":
 
     # output dialog
     if len(output_dialog_list):
-        output_file = os.path.join(output_dir, "dialog_{}.json".format(args.lang))
+        output_file = os.path.join(output_dir, "dialog_{}.jsonl".format(args.lang))
         with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(output_dialog_list, f, indent=4, ensure_ascii=False)
+            for dialog in output_dialog_list[:10]:
+                print(json.dumps(dialog, ensure_ascii=False), file=f)
         print("Output dialog at {}".format(output_file))
