@@ -9,12 +9,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--repo",
-        default="Path/To/AnimeGameData",
+        default="/mnt/data/home/workspace/code/github/AnimeGameData",
         type=str,
-        required=True,
+        # required=True,
         help="data dir",
     )
-    parser.add_argument("--lang", default="CHS", type=str, help="language type")
+    parser.add_argument("--lang", default="JP", type=str, help="language type")
     parser.add_argument(
         "--n_utter",
         default=1000,

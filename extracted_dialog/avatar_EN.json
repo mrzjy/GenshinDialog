@@ -10,6 +10,8 @@
         "cvJapanese": "野島健児",
         "cvKorean": "Kim Myeong-joon",
         "desc": "A genius known as the Kreideprinz, he is the Chief Alchemist and Captain of the Investigation Team of the Knights of Favonius.",
+        "infoBirthDay": "13",
+        "infoBirthMonth": "9",
         "sayings": [
             "Hello\tI am Albedo, Chief Alchemist of the Knights of Favonius. You carry the aura of the stars, interesting... I would like to study you, if you do not mind. I'm certain we will have many opportunities to be alone in the future.",
             "Chat: Still Life\tWhat a view... How about a quick break so I can sketch this beautiful scenery?",
@@ -99,6 +101,8 @@
         "cvJapanese": "梅原裕一郎",
         "cvKorean": "Jun Seung-hwa",
         "desc": "The current scribe of the Sumeru Akademiya, a man endowed with extraordinary intelligence and talent. He lives free — free from the searching eyes of ordinary people, anyway.",
+        "infoBirthDay": "11",
+        "infoBirthMonth": "2",
         "sayings": [
             "Hello\tI'm Alhaitham, the Akademiya's scribe. If you wish to access an archived file, please submit an application according to the prescribed format.\nOh, your form isn't ready? Not to worry. You can come again on the next working day. My work hours are posted outside the office.",
             "Chat: Work\tThe scribe's work is simple, which is exactly why I took the position.",
@@ -189,6 +193,8 @@
         "cvJapanese": "高垣彩陽",
         "cvKorean": "Jo Hyeon-jung",
         "desc": "Formerly an outcast, now a hunter of unparalleled skill. Ready to do the right thing at any time.",
+        "infoBirthDay": "4",
+        "infoBirthMonth": "4",
         "sayings": [
             "Hello\tAloy here. I don't know this world, but my arrows are sharp and my bow's ready. If your party needs help, I'll do what I can.",
             "Chat: Moving Out\tCome on. Enough standing around, let's keep moving.",
@@ -268,6 +274,8 @@
         "cvJapanese": "石見舞菜香",
         "cvKorean": "Kim Yeon-woo",
         "desc": "Always energetic and full of life, Amber's the best — albeit only — Outrider of the Knights of Favonius.",
+        "infoBirthDay": "10",
+        "infoBirthMonth": "8",
         "sayings": [
             "Hello\tOutrider Amber reporting for duty! Just say the word if you ever need my help!",
             "Chat: Hobbies\tI feel like running.",
@@ -371,6 +379,8 @@
         "cvJapanese": "西川貴教",
         "cvKorean": "Song Jun-seok",
         "desc": "The first and greatest head of the Arataki Gang, famed throughout Inazuma City's Hanamizaka... Wait, what? You've never heard of them? Are you trying to be funny here?",
+        "infoBirthDay": "1",
+        "infoBirthMonth": "6",
         "sayings": [
             "Hello\tI'm the head honcho of the Arataki Gang, and everyone knows my name...s. Names, I have many. Arataki \"The One and Oni\" Itto, Arataki \"The Oni Sumo King\" Itto, Arataki \"The Pride of Oni\" Itto, Arataki \"Beetle Gladiator\" Itto, Arataki \"The Ultimate TCG Champion\" Itto, Arataki \"He Might Lose but He'll Never Admit Defeatto\"... Anyway, these are some of the ones I usually go by, so go ahead, take your pick. I'll respond to whichever one you choose, I promise. Hehe, you're welcome.",
             "Chat: Itto's Here\tArataki \"Numero Uno\" Itto, here in the flesh! Hahaha... *cough*",
@@ -468,6 +478,8 @@
         "cvJapanese": "鬼頭明里",
         "cvKorean": "Yoon Ah-young",
         "desc": "Every citizen of Mondstadt adores Barbara. She learned the word \"idol\" from a magazine.",
+        "infoBirthDay": "5",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tTada! *giggles* Barbara is here~ Leave the healing to me, I will not disappoint you!",
             "Chat: Sleepiness\t*yawn* All this standing around is making me so sleepy...",
@@ -562,6 +574,8 @@
         "cvJapanese": "小清水亜美",
         "cvKorean": "Jung Yoo-mi",
         "desc": "Captain of her crew, The Crux. She's quite an unbound and forthright woman.",
+        "infoBirthDay": "14",
+        "infoBirthMonth": "2",
         "sayings": [
             "Hello\tI'm Beidou. You've heard of my ship, The Crux and its crew? If you too love adventure, then join me. I've got your back.",
             "Chat: Sparring\tIf you ever want to trade tactics, I'm always ready.",
@@ -657,6 +671,8 @@
         "cvJapanese": "逢坂良太",
         "cvKorean": "Song Ha-rim",
         "desc": "A good-natured adventurer from Mondstadt who's unfortunately extremely unlucky.",
+        "infoBirthDay": "29",
+        "infoBirthMonth": "2",
         "sayings": [
             "Hello\tThis is your team? Cool... I like the vibe. I'm Bennett, leader of Benny's Adventure Team. Any chance we can team up? Please?",
             "Chat: Treasures\tLet's go find some treasure!",
@@ -754,6 +770,8 @@
         "cvJapanese": "柚木涼香",
         "cvKorean": "Jun Young-soo",
         "desc": "A descendant of King Deshret with an amber left eye. The defender of Aaru Village.",
+        "infoBirthDay": "3",
+        "infoBirthMonth": "5",
         "sayings": [
             "Hello\tWelcome, weary Traveler from afar. Nights in the desert are cruel. You should rest here tonight. Sleep soundly, and know that I am watching over you.",
             "Chat: Spear and Shield\tA shield is not enough to protect the most important things. That's why I must also wield a spear.",
@@ -847,6 +865,8 @@
         "cvJapanese": "斉藤壮馬",
         "cvKorean": "Yang Jeong-hwa",
         "desc": "A young exorcist from a family of exorcists. He does everything he can to suppress his abundance of yang energy.",
+        "infoBirthDay": "7",
+        "infoBirthMonth": "9",
         "sayings": [
             "Hello\tMy name is Chongyun. My family has practiced the art of exorcism in Liyue for many generations. Fate has been generous in allowing my path to cross with that of your distinguished self. ...Oh, no — my services are free of charge!",
             "Chat: The Art of Exorcism\tExorcism uses thaumaturgy and martial arts to conquer evil. There are other means to the same end, but they are not the true way.",
@@ -938,6 +958,8 @@
         "cvJapanese": "前川涼子",
         "cvKorean": "Bang Siu",
         "desc": "A trainee ranger active in Avidya Forest. Behind her enthusiastic words and actions hides a slightly introverted personality.",
+        "infoBirthDay": "8",
+        "infoBirthMonth": "5",
         "sayings": [
             "Hello\tTrainee Forest Ranger Collei, reporting for duty! I will ensure your safe passage through this forest. ...Phew, I think I've finally got that line down! ...I—I didn't get any of it wrong, did I?",
             "Chat: Forest Patrol Route Map\tAccording to today's forest patrol route map... we need to head here first, then make our way over to there... Hmm... There's a loooot of writing...",
@@ -1031,6 +1053,8 @@
         "cvJapanese": "入野自由",
         "cvKorean": "Lee Woo-ri",
         "desc": "The General Mahamatra in charge of supervising the researchers of the Akademiya. It is said that when he gets down to work, the General Mahamatra is even more efficient than the \"Great Vayuvyastra\" made by the Kshahrewar.",
+        "infoBirthDay": "23",
+        "infoBirthMonth": "6",
         "sayings": [
             "Hello: The Past\tI'm Cyno, the former General Mahamatra. Now I use my abilities to punish evil as I see fit. If you share my devotion to rules and justice, then I can lend you my strength.",
             "Hello: The Present\tI'm Cyno, General Mahamatra of the Akademiya. It's my duty to uphold the rules, and punish wrongdoing. I will protect you on your journey.",
@@ -1130,6 +1154,8 @@
         "cvJapanese": "福原綾香",
         "cvKorean": "Kim Hyeon-sim",
         "desc": "A member of the Eremites, a mercenary organization that roams the sands of Sumeru. Valiant and powerful, she enjoys great fame amongst her fellow Eremites.",
+        "infoBirthDay": "7",
+        "infoBirthMonth": "4",
         "sayings": [
             "Hello\tMy name's Dehya. I'm the merc you hired. So what you got for me? A commission? A fight? Armed escort? Whatever it is — you know where to find me.",
             "Chat: Mercenaries\tWe mercs have one simple rule: Whoever pays the most is your new boss.",
@@ -1222,6 +1248,8 @@
         "cvJapanese": "小野賢章",
         "cvKorean": "Choi Seung-hoon",
         "desc": "The tycoon of a winery empire in Mondstadt, unmatched in every possible way.",
+        "infoBirthDay": "30",
+        "infoBirthMonth": "4",
         "sayings": [
             "Hello\tDiluc, of Mondstadt. Not interested in idle chit-chat. If you have things you want to get done, let me know.",
             "Chat: Relax\tGuess we can rest a bit.",
@@ -1319,6 +1347,8 @@
         "cvJapanese": "井澤詩織",
         "cvKorean": "Woo Jeong-shin",
         "desc": "A young lady who has inherited trace amounts of non-human blood. She is the incredibly popular bartender of the Cat's Tail tavern.",
+        "infoBirthDay": "18",
+        "infoBirthMonth": "1",
         "sayings": [
             "Hello\tDiona, bartender of the Cat's Tail! I charge a hefty fee for private events. Huh? You didn't come here for a drink? Hmm... Then I accept your invitation... I suppose...",
             "Chat: Relax\tAhhh... that stretch feels good.",
@@ -1423,6 +1453,8 @@
         "cvJapanese": "金田朋子",
         "cvKorean": "Lee Myeong-ho",
         "desc": "An elusive merchant who has a fondness for glittering Mora.",
+        "infoBirthDay": "21",
+        "infoBirthMonth": "12",
         "sayings": [
             "Hello\tOh! Well if it isn't the renowned Traveler! I'm Dori Sangemah Bay, a traveling merchant. As an introductory gift, you can enjoy a 10% discount on all my wares and merchandise. Feel free to have a look. I'll even help package up your purchase, free of charge.",
             "Chat: Mora\t♪ I love Mora, and Mora loves me! I make Mora, and it makes me happy! Lalala... ♪",
@@ -1518,6 +1550,8 @@
         "cvJapanese": "佐藤利奈",
         "cvKorean": "Kim Hyeon-ji",
         "desc": "The Spindrift Knight, a scion of the old aristocracy, and the Captain of the Knights of Favonius Reconnaissance Company. The reason for which a descendant of the ancient nobles might join the Knights remains a great mystery in Mondstadt to this very day.",
+        "infoBirthDay": "25",
+        "infoBirthMonth": "10",
         "sayings": [
             "Hello\tCaptain Eula Lawrence, Spindrift Knight, Knights of Favonius Reconnaissance Company. I extend to you my greetings. Huh? What's that...? Yes, Lawrence, the evil aristocrats of historical infamy. Oh, we're still very much evil. Just look at me, I'm infiltrating the inner ranks of the Knights of Favonius, all as part of a diabolical plan to exact our revenge and reclaim our former glory!",
             "Chat: Etiquette\tKnights and aristocrats share the same cultural heritage, but the knights had enough sense to do away with all the superfluous detail.",
@@ -1621,6 +1655,8 @@
         "cvJapanese": "堀江由衣",
         "cvKorean": "Kim Yu-rim",
         "desc": "A researcher from \"one hundred years ago.\" She enjoys self-identifying as everyone's senior, and has significant knowledge of ancient scripts and machines of all kinds.",
+        "infoBirthDay": "20",
+        "infoBirthMonth": "8",
         "sayings": [
             "Hello\tHere's the Akademiya's Distinguished Scholar Award, this is the Sumeru Puzzlers' League Lifetime Achievement Award, and there's something from the Synopsium on Ruin Mechanisms... What do you think? Got any interest in becoming my student? Ahem, just as a note, I am from the Haravatat Darshan. You'll get lost if you try to find me in the halls of Kshahrewar.",
             "Chat: Rules\tA hundred years have passed, yet there hasn't been any change to those dumb rules at the Akademiya...",
@@ -1712,6 +1748,8 @@
         "cvJapanese": "内田真礼 & 増谷康紀",
         "cvKorean": "Park Go-woon & Lee Hyeon",
         "desc": "A mysterious girl who calls herself \"Prinzessin der Verurteilung\" and travels with a night raven named Oz.",
+        "infoBirthDay": "27",
+        "infoBirthMonth": "5",
         "sayings": [
             "Hello\tFischl: I, Fischl, Prinzessin der Verurteilung, descend upon this land by the call of fate an— Oh, you are also a traveler from another world? Very well, I grant you permission to travel with me.\nOz: She means, \"Nice to meet you.\"",
             "Chat: Whispers of Destiny\tI hear the voice of fate, speaking my name in humble supplication...",
@@ -1804,6 +1842,8 @@
         "cvJapanese": "上田麗奈",
         "cvKorean": "Kim Seon-hye",
         "desc": "The secretary at Yuehai Pavilion. The blood of the qilin, an illuminated beast, flows within her veins.",
+        "infoBirthDay": "2",
+        "infoBirthMonth": "12",
         "sayings": [
             "Hello\tCopy that! Here is a draft Service Agreement for your review and consideration. Effective immediately, if all is in order... Ah! Wait a sec, wait a sec, I forgot to sign it... Gan... Yu... There. Right. Now... What was it you needed me to do for you exactly?",
             "Chat: Relaxed\tIt's so nice to de-stress.",
@@ -1905,6 +1945,8 @@
         "cvJapanese": "畠中祐",
         "cvKorean": "Lee Sae-byeok",
         "desc": "The great general of Watatsumi Island's forces. He is deeply trusted by his subordinates.",
+        "infoBirthDay": "18",
+        "infoBirthMonth": "5",
         "sayings": [
             "Hello\tGeneral Gorou of the Watatsumi Island resistance, ready and waiting! I've long heard of your sterling reputation and I look forward to fighting our way to victory side-by-side! ...Heh, so what do you think? Did that sound inspiring?",
             "Chat: Tactics\tKeep your weapon at the ready. You never know what's around the corner...",
@@ -2000,6 +2042,8 @@
         "cvJapanese": "高橋李依",
         "cvKorean": "Kim Ha-ru",
         "desc": "The 77th Director of the Wangsheng Funeral Parlor. She took over the business at a rather young age.",
+        "infoBirthDay": "15",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tYoh, now why might you be looking for me, hm? Oh, you didn't know? I'm the 77th Director of the Wangsheng Funeral Parlor, Hu Tao. Though by the looks of you... Radiant glow, healthy posture... Yes, you're definitely here for something other than that which falls within my regular line of work, aren't you?",
             "Chat: Wangsheng Funeral Parlor\tWanna come over for tea?",
@@ -2100,6 +2144,8 @@
         "cvJapanese": "斎藤千和",
         "cvKorean": "Ahn Young-mi",
         "desc": "The righteous and rigorous Dandelion Knight, and Acting Grand Master of Mondstadt's Knights of Favonius.",
+        "infoBirthDay": "14",
+        "infoBirthMonth": "3",
         "sayings": [
             "Hello\tI am Jean, the Dandelion Knight, requesting approval to join your party. From this day onwards, my honor and loyalty lie with you.",
             "Chat: Operation\tIt's time to move on, we shouldn't stay here.",
@@ -2196,6 +2242,8 @@
         "cvJapanese": "島﨑信長",
         "cvKorean": "Kim Shin-woo",
         "desc": "A wandering samurai from Inazuma who is currently with Liyue's Crux Fleet. A gentle and carefree soul whose heart hides a great many burdens from the past.",
+        "infoBirthDay": "29",
+        "infoBirthMonth": "10",
         "sayings": [
             "Hello\t\"Come driving rain or winds that churn, I shall return, by blade alone, armed, if barefoot, to my home...\" I am Kaedehara Kazuha, a wanderer who roams the land. Since we are both travelers, let us journey together for a time.",
             "Chat: Nature\tThis scenery is wonderful... Surely enough to convince anyone to become a wanderer.",
@@ -2293,6 +2341,8 @@
         "cvJapanese": "鳥海浩輔",
         "cvKorean": "Jung Joo-won",
         "desc": "An accomplished swordsman and a strategic thinker in the Knights of Favonius, rumored to hail from beyond Mondstadt.",
+        "infoBirthDay": "30",
+        "infoBirthMonth": "11",
         "sayings": [
             "Hello\tKaeya, Knight of Favonius. Please allow me to join you on your journey. Guarding you on your journey sounds far more entertaining than any of the usual Favonius stuff.",
             "Chat: Nothing to Do\tI didn't know you were such a slacker.",
@@ -2391,6 +2441,8 @@
         "cvJapanese": "早見沙織",
         "cvKorean": "Lee Yoo-ri",
         "desc": "Daughter of the Yashiro Commission's Kamisato Clan. Dignified and elegant, as well as wise and strong.",
+        "infoBirthDay": "28",
+        "infoBirthMonth": "9",
         "sayings": [
             "Hello\tMaster of Inazuma Kamisato Art Tachi Jutsu — Kamisato Ayaka, present!\nDelighted to make your acquaintance.",
             "Chat: Stability\tI only wish life could be as leisurely as this a little more often... How greedy of me.",
@@ -2486,6 +2538,8 @@
         "cvJapanese": "石田彰",
         "cvKorean": "Jang Min-hyeok",
         "desc": "The young but highly accomplished head of the Yashiro Commission's Kamisato Clan. Cultured and polite, he is a man of many ways and means.",
+        "infoBirthDay": "26",
+        "infoBirthMonth": "3",
         "sayings": [
             "Hello\tGreetings. Ayaka has mentioned you on numerous occasions — alas, my schedule has been rather busier than anticipated recently, which belated our first meeting until today. Kamisato Ayato, head of the Kamisato Clan. Delighted to make your acquaintance.",
             "Chat: Spoiled\tI'm sure I've forgotten something... Not to worry, I'll simply send someone to fetch it. As soon as I remember what it was.",
@@ -2580,6 +2634,8 @@
         "cvJapanese": "喜多村英梨",
         "cvKorean": "Lee Bo-hee",
         "desc": "The Yuheng of the Liyue Qixing. Keqing has much to say about Rex Lapis's unilateral approach to policymaking in Liyue — but in truth, gods admire skeptics such as her quite a lot.",
+        "infoBirthDay": "20",
+        "infoBirthMonth": "11",
         "sayings": [
             "Hello\tI am Keqing, Yuheng of the Liyue Qixing. We live in an era of change, as the old order that has existed for a thousand years is about to be rewritten. Join me. Let us bear witness to this historical moment together.",
             "Chat: Delays\tCome on. Enough procrastinating. Let's go.",
@@ -2687,6 +2743,8 @@
         "cvJapanese": "久野美咲",
         "cvKorean": "Bang Yeon-ji",
         "desc": "An explosives expert and a regular at the Knights of Favonius's confinement room. Also known as Fleeing Sunlight.",
+        "infoBirthDay": "27",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tSpark Knight Klee of the Knights of Favonius, reporting for duty! ...There's some more, but uh, I forgot. I'm not so good at remembering...",
             "Chat: Spoils\tKlee was a brave girl today! I found a really weird-looking lizard! Want me to show it to you?",
@@ -2782,6 +2840,8 @@
         "cvJapanese": "瀬戸麻沙美",
         "cvKorean": "Moon Ji-young",
         "desc": "A general of the Tenryou Commission. Bold, decisive, and skilled in battle.",
+        "infoBirthDay": "14",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tI am Kujou Sara. You may forget my name, but this you must know: On my watch, Inazuma will always be defended, and the will of the Shogun will always be done. Deity or demon, if you make an enemy of me you will be struck down! Oh, ahem... Don't be so nervous. I have agreed to fight by your side, and I will honor that commitment. I may be uncompromising on matters of great importance, but on most other things, you will find me quite easygoing.",
             "Chat: Target\tTo strike your foe takes unity between mind, arrow, and bow.",
@@ -2879,6 +2939,8 @@
         "cvJapanese": "水橋かおり",
         "cvKorean": "Kim Yool",
         "desc": "The capable and reliable Arataki Gang deputy leader. Please note: capable and reliable are not appellations for the \"Arataki Gang,\" but for their deputy leader in specific.",
+        "infoBirthDay": "27",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tOh... Hey there! I'm Kuki Shinobu, deputy leader of the Arataki Gang. We offer a wide range of services, including but not limited to transport and logistics, security, home repair, and musical performances. Please feel free to contact me if you need anything. Here's my card.",
             "Chat: In a Pinch\tJust let me know if you ever find yourself in a pinch. I can help you out.",
@@ -2970,6 +3032,8 @@
         "cvJapanese": "富田美憂",
         "cvKorean": "Kang Sae-bom",
         "desc": "A Rtawahist student who specializes in Theoretical Astrology. Heavily prone to somnambulism and locked in a grinding war with sleep deprivation, the problem of restful slumber is a most troubling one to her.",
+        "infoBirthDay": "19",
+        "infoBirthMonth": "12",
         "sayings": [
             "Hello\t*yawn* ...Hi, I'm Layla, a Rtawahist student... Hmm? Sorry, I didn't sleep well last night, so I'm a bit out of it today — what did you say, again? ...You wanna team up with me? No, no, it's not that I don't want to, I'm just not sure my crazy sleep schedule will really work for you... But uh, I guess... I look forward to working with you!",
             "Chat: Gaze\tEven when we're not looking up at the stars, they're always there, watching over us.",
@@ -3060,6 +3124,8 @@
         "cvJapanese": "田中理恵",
         "cvKorean": "Park Go-woon",
         "desc": "The languid but knowledgeable Librarian of the Knights of Favonius, deemed by Sumeru Akademiya to be their most distinguished graduate in the past two centuries.",
+        "infoBirthDay": "9",
+        "infoBirthMonth": "6",
         "sayings": [
             "Hello\tHi darling, are you going to be Lisa's little helper? What? Me, a grand mage? That was a long time ago, I'm just a humble librarian now. *chuckles* Don't worry darling, I'll take very good care of you. So...",
             "Chat: Afternoon Tea\tIt's nearly time for afternoon tea.",
@@ -3158,6 +3224,8 @@
         "cvJapanese": "三瓶由布子",
         "cvKorean": "Yoon Eun-seo",
         "desc": "A young knight born to an ordinary family. He serves as a Front-Line Surveyor in his Company. He is a low-key and cautious character.",
+        "infoBirthDay": "11",
+        "infoBirthMonth": "8",
         "sayings": [
             "Hello\tMika, Front-Line Land Surveyor, Knights of Favonius Reconnaissance Company, reporting in. It's an honor to fight alongside you. If there's anything I can do to support you, just let me know and I'll get to it right away. Anyway, I'll make every effort to navigate us safely and report accurate intel on the enemy!",
             "Chat: Staying on Target\tWe'd better stay battle ready... Our next mission could start at any time.",
@@ -3258,6 +3326,8 @@
         "cvJapanese": "小原好美",
         "cvKorean": "Woo Jeong-shin",
         "desc": "A mysterious young astrologer who proclaims herself to be \"Astrologist Mona Megistus,\" and who possesses abilities to match the title. Erudite, but prideful.",
+        "infoBirthDay": "31",
+        "infoBirthMonth": "8",
         "sayings": [
             "Hello\tI am Astrologist Mona Megistus, meaning \"The Great Astrologist Mona.\" If it is divination you seek from me, then I ask you respect my name by learning it wholly, here and now.",
             "Chat: Astrology\tDivination is about precisely foretelling one's written destiny. Over-embellishing that fate only leads to misconception.",
@@ -3351,6 +3421,8 @@
         "cvJapanese": "田村ゆかり",
         "cvKorean": "Park Shi-yoon",
         "desc": "A caged bird secluded within the confines of the Sanctuary of Surasthana who can only see the world in her dreams.",
+        "infoBirthDay": "27",
+        "infoBirthMonth": "10",
         "sayings": [
             "Hello\tNice to meet you! Hehe, I've actually been watching you for a long time already. My name's Nahida. I might look like a child, but don't be fooled: I understand this world much better than any grown-up. So... can we trade knowledge? I want to hear all about your travel stories. So, what would you like to know in return?",
             "Chat: Invitation\tIf you're not sure what to do next, how about I take you on a walk?",
@@ -3449,6 +3521,8 @@
         "cvJapanese": "金元寿子",
         "cvKorean": "Chae Rim",
         "desc": "The star of the Zubayr Theater. She is full of warmth and innocence, and her dances are lively and elegant.",
+        "infoBirthDay": "3",
+        "infoBirthMonth": "12",
         "sayings": [
             "Hello\tHello, I'm Nilou from Zubayr Theater. We have one dance scheduled for today, and it's about to start — keep your eyes peeled!",
             "Chat: Practice\tFirst get into position like this, then move like that... Yep, that's it.",
@@ -3540,6 +3614,8 @@
         "cvJapanese": "大原さやか",
         "cvKorean": "Kwak Kyu-mi",
         "desc": "The Tianquan of the Liyue Qixing. Her wealth is unsurpassed in all of Teyvat.",
+        "infoBirthDay": "26",
+        "infoBirthMonth": "8",
         "sayings": [
             "Hello\tI am Ningguang, Tianquan of Qixing. You wish to trade? You be my personal bodyguard, and I will show you how to get ahead in Liyue.",
             "Chat: Antiques\tEven if an antique is priceless, the happiness it brings lasts for only the moment that you obtain it.",
@@ -3638,6 +3714,8 @@
         "cvJapanese": "高尾奏音",
         "cvKorean": "Lee Bo-hee",
         "desc": "A maid who faithfully serves the Knights of Favonius. She dreams of joining their ranks someday.",
+        "infoBirthDay": "21",
+        "infoBirthMonth": "3",
         "sayings": [
             "Hello\tMy name is Noelle, maid of the Knights of Favonius, and it's my pleasure to be joining you on your adventure today. Should you encounter any problems at all at any point throughout your journey, please do not hesitate to call me and I will be delighted to provide you with my full assistance. Yes, starting right now — what do you need?",
             "Chat: A Favor\tLeave it to me! All of it, whatever it is! ...What... exactly is \"it\"? I didn't quite catch your request...",
@@ -3731,6 +3809,8 @@
         "cvJapanese": "田村ゆかり",
         "cvKorean": "Lee Seul",
         "desc": "An apprentice and herb gatherer at Bubu Pharmacy. An undead with a bone-white complexion, she seldom has much in the way of words or emotion.",
+        "infoBirthDay": "3",
+        "infoBirthMonth": "3",
         "sayings": [
             "Hello\tI am Qiqi. I am a zombie. And I... forgot what comes next.",
             "Chat: Talking to Herself\tHey, do you know what? Uhh... neither do I. I... already forgot.",
@@ -3826,6 +3906,8 @@
         "cvJapanese": "沢城みゆき",
         "cvKorean": "Park Ji-yoon",
         "desc": "Her Excellency, the Almighty Narukami Ogosho, who promised the people of Inazuma an unchanging Eternity.",
+        "infoBirthDay": "26",
+        "infoBirthMonth": "6",
         "sayings": [
             "Hello\tNo salutations needed. My exalted status shall not be disclosed as we travel among the common folk. I acknowledge that you are a person of superior ability. Henceforth, you will be my guard. Worry not. Should any danger arise, I shall dispose of it.",
             "Chat: Idleness\tInactivity serves no purpose whatsoever. Hmph.",
@@ -3925,6 +4007,8 @@
         "cvJapanese": "内山昂輝",
         "cvKorean": "Kim Seo-young",
         "desc": "A boy who lives among the wolves in Wolvendom of Mondstadt, away from human civilization. As agile as lightning.",
+        "infoBirthDay": "9",
+        "infoBirthMonth": "9",
         "sayings": [
             "Hello\tYou smell... *sniff* nice! Let's hunt.",
             "Chat: Scent\t*sniff* I smell rabbit.",
@@ -4015,6 +4099,8 @@
         "cvJapanese": "加隈亜衣",
         "cvKorean": "Kim Bo-na",
         "desc": "A sister of the church, though you wouldn't know it if it weren't for her attire. Known for her sharp, cold words and manner, she often works alone.",
+        "infoBirthDay": "24",
+        "infoBirthMonth": "1",
         "sayings": [
             "Hello\tListen disciple, if you've got a problem you can't handle, then I'm the one for the job. But if you're looking for prayer, you'd better find some other Sister\n...Huh? You're not a disciple?",
             "Chat: Boredom\tDon't we have a job to do?",
@@ -4108,6 +4194,8 @@
         "cvJapanese": "三森すずこ",
         "cvKorean": "Yeo Yoon-mi",
         "desc": "The Divine Priestess of Watatsumi Island. All of the island's affairs are at this young lady's fingertips.",
+        "infoBirthDay": "22",
+        "infoBirthMonth": "2",
         "sayings": [
             "Chat: Reading\tYae Publishing House has released numerous works that lay out military strategy in a simple and pragmatic way. Those are my favorite.",
             "Chat: Fish\tRespect must be given to the will of every creature. Each fish in the ocean swims in its own direction.",
@@ -4200,6 +4288,8 @@
         "cvJapanese": "洲崎綾",
         "cvKorean": "Lee Ji-hyeon",
         "desc": "A pint-sized ninja attached to the Shuumatsuban, who always seems sleep-deprived.",
+        "infoBirthDay": "19",
+        "infoBirthMonth": "10",
         "sayings": [
             "Elemental Skill: I\tBye!",
             "Elemental Skill: II\tGotta dash~!",
@@ -4299,6 +4389,8 @@
         "cvJapanese": "川澄綾子",
         "cvKorean": "Lee Hyeon-jin",
         "desc": "An adepti disciple with a most unusual air about her. Having spent much time cultivating in isolation in Liyue's mountains, she has become every bit as cool and distant as the adepti themselves.",
+        "infoBirthDay": "10",
+        "infoBirthMonth": "3",
         "sayings": [
             "Hello\tMy name is Shenhe. I was born fated to bear the curse of calamity, so I am prone to bring harm to the people around me. The adepti urged me to bind my soul with red ropes to keep my homicidal nature at bay. If you are able to walk alongside me without fear... Hah, very well. Now, give me your hand.",
             "Chat: Home\tThe assumption that every person has somewhere to call home is naive. I got used to living in the mountains alongside the birds and beasts a long time ago.",
@@ -4395,6 +4487,8 @@
         "cvJapanese": "井口祐一",
         "cvKorean": "Jung Eui-jin",
         "desc": "A young prodigy detective from the Tenryou Commission. His senses are sharp and his thoughts are clear.",
+        "infoBirthDay": "24",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello...\tThe name's Shikanoin Heizou, sharpest and most successful detective of the Tenryou Commission... Ooh, my goodness, life's really put you through the wringer recently, hasn't it? I can tell. Here, why don't you take a seat, tell me the whole story.",
             "Chat: Criminal Cases\tThere's something in the air... something that tells me a new case is brewing.",
@@ -4487,6 +4581,8 @@
         "cvJapanese": "藤田茜",
         "cvKorean": "Kim Ha-young",
         "desc": "An alchemist filled with curiosity about all things. She researches bio-alchemy.",
+        "infoBirthDay": "26",
+        "infoBirthMonth": "11",
         "sayings": [
             "Hello\tI'm Sucrose, a researcher of alchemy. I heard you've been to a lot of places, so I was wondering if you... Ah, what am I saying! It's only our first time meeting, I shouldn't trouble you. But... if you're willing, I'd love to hear any stories you have about your adventures. I'd... really like that.",
             "Chat: Curiosity\tWhat was that? Oh... it's gone. Can I go take a look?",
@@ -4581,6 +4677,8 @@
         "cvJapanese": "木村良平",
         "cvKorean": "Nam Do-hyeong",
         "desc": "No. 11 of The Harbingers, also known as \"Childe.\" His name is highly feared on the battlefield.",
+        "infoBirthDay": "20",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tI'm No. 11 of the Fatui Harbingers, codename Childe, but I also go by Tartaglia. And you... Hmm, you too like to cause quite the stir, don't you? Something tells me we're going to get along splendidly.",
             "Chat: Idleness\tYou know, there are better ways to seek out our enemies than... well, standing here.",
@@ -4687,6 +4785,8 @@
         "cvJapanese": "森田成一",
         "cvKorean": "Ryu Seung-kon",
         "desc": "The Kamisato Clan's housekeeper. A well-known \"fixer\" in Inazuma.",
+        "infoBirthDay": "9",
+        "infoBirthMonth": "1",
         "sayings": [
             "Hello\tIt's good to meet you at last, Traveler. I've been hearing about you for a long time now. I'm your new buddy, Thoma — as long as that's okay with you, of course!",
             "Chat: Thoma's Treat\tHey... how about we go for a nice meal some time? My treat, of course.",
@@ -4783,6 +4883,8 @@
         "cvJapanese": "小林沙苗",
         "cvKorean": "Jung Ui-taek",
         "desc": "A young researcher well-versed in botany who currently serves as a Forest Watcher in Avidya Forest. He is a straight shooter with a warm heart — and a dab hand at guiding even the dullest of pupils.",
+        "infoBirthDay": "29",
+        "infoBirthMonth": "12",
         "sayings": [
             "Hello\tHi there. I'm Tighnari, Forest Watcher of the Avidya Forest. My duty is to preserve both the rainforest's ecosystem and the safety of its visitors. If this is your first time here, I suggest you first peruse the Avidya Forest Survival Guide, paying particular attention to the chapter \"Distinguishing Between Edible and Poisonous Mushrooms.\"",
             "Chat: Leaf Bookmark\tIf you press a leaf between dry sheets of paper, you can make an attractive and handy bookmark.",
@@ -5223,6 +5325,8 @@
         "cvJapanese": "村瀬歩",
         "cvKorean": "Jung Yoo-jung",
         "desc": "One of the many bards of Mondstadt, who freely wanders the city's streets and alleys.",
+        "infoBirthDay": "16",
+        "infoBirthMonth": "6",
         "sayings": [
             "Hello\t*Yawn* That was a refreshing sleep. Ah, Traveler, we meet again! What? You don't remember me? Ahaha, well, allow me to join you on your quest once again. I must see to it that the bards of the world tell the Traveler's tales!",
             "Chat: Playing the Lyre\tSure, I'll play you another tune, but it'll cost you an apple.",
@@ -5319,6 +5423,8 @@
         "cvJapanese": "柿原徹也",
         "cvKorean": "Min Seung-woo",
         "desc": "A wayfaring figure whose identity is a mystery. He dresses like a mountain ascetic, but he certainly does not act the part.",
+        "infoBirthDay": "3",
+        "infoBirthMonth": "1",
         "sayings": [
             "Hello\tYou want me to introduce myself? I've gone by many names and titles during my journey. Although each one is more eminent than any ordinary mortal could imagine, they're all just water under the bridge to me now.\nCall me whatever you like. Go ahead, let me see what you can come up with. Don't disappoint me.",
             "Chat: The Wind\tThere's no such thing as pure freedom in this world. Even the wind cannot blow on forever.",
@@ -5426,6 +5532,8 @@
         "cvJapanese": "小澤亜李",
         "cvKorean": "Yoon Ah-young",
         "desc": "A renowned chef from Liyue. She's extremely passionate about cooking and excels at making her signature hot and spicy dishes.",
+        "infoBirthDay": "2",
+        "infoBirthMonth": "11",
         "sayings": [
             "Hello\tHello, nice to meet you! My name is Xiangling, I'm a chef from Liyue! My favorite place is the chicken... I mean, the kitchen! Ugh, I practiced so hard, but I still get nervous when introducing myself... Heh.",
             "Chat: Snacks\tIs there time for a quick snack? I'll whip one up in no time!",
@@ -5521,6 +5629,8 @@
         "cvJapanese": "松岡禎丞",
         "cvKorean": "Shim Kyu-hyeok",
         "desc": "A yaksha adeptus who defends Liyue. Also heralded as the \"Conqueror of Demons\" and \"Vigilant Yaksha.\"",
+        "infoBirthDay": "17",
+        "infoBirthMonth": "4",
         "sayings": [
             "Hello\tIf you awake to a knife at your throat, if monsters dig their claws into you, if death comes knocking at your door... Call out my name. Adeptus Xiao. I will be here when you call.",
             "Chat: Idleness\tReduced to just standing around... How absurd.",
@@ -5617,6 +5727,8 @@
         "cvJapanese": "皆川純子",
         "cvKorean": "Kwak Kyu-mi",
         "desc": "A young man carrying a longsword who is frequently seen at book booths. He has a chivalrous heart and yearns for justice and fairness for all.",
+        "infoBirthDay": "9",
+        "infoBirthMonth": "10",
         "sayings": [
             "Hello\tXingqiu at your service, my liege! I humbly trust that even one such as I, a mere bookworm, may yet prove to be of some utility under your wise leadership. Nice, I don't often get a chance to speak with such formality. It felt pretty good!",
             "Chat: Night of Solitude\t'Twas on a deserted moonlit night that the hero approached the vile dragon's limpid lair...",
@@ -5717,6 +5829,8 @@
         "cvJapanese": "たかはし智秋",
         "cvKorean": "Kim Chae-ha",
         "desc": "Liyue's sole rock 'n' roll musician. She rebels against ossified prejudices using her music and passionate singing.",
+        "infoBirthDay": "16",
+        "infoBirthMonth": "10",
         "sayings": [
             "Hello\tXinyan's the name, an' rock 'n' roll's the game — and I'm the only one who plays it in Liyue Harbor. Been thinking about staging concerts elsewhere lately, but... Hmm... Well, word is that you've been all over the place, Traveler. So, what say you sign me up for your world tour? Anywhere's good!",
             "Chat: Vigor\tIf there's fire in your soul, you gotta rock 'n' roll. So c'mon! Let's get movin'!",
@@ -5809,6 +5923,8 @@
         "cvJapanese": "佐倉綾音",
         "cvKorean": "Moon Yoo-jung",
         "desc": "Lady Guuji of the Grand Narukami Shrine. Also serves as the editor-in-chief of Yae Publishing House. Unimaginable intelligence and cunning are hidden under her beautiful appearance.",
+        "infoBirthDay": "27",
+        "infoBirthMonth": "6",
         "sayings": [
             "Hello\tI am the Guuji of the Grand Narukami Shrine. The purpose of my visit is to monitor your every move, for such is the order of the shrine... Oh, come on, don't be so nervous. It's only officialese, for goodness' sake. I couldn't just go gallivanting around for no reason at all, could I? Now, come on, do something amusing for me.",
             "Chat: Creative Writing\tTraveling to other worlds is all that anyone seems be writing about these days. Huh, goodness knows what they find so disappointing about their own world.",
@@ -5904,6 +6020,8 @@
         "cvJapanese": "花守ゆみり",
         "cvKorean": "Jo Kyeong-lee",
         "desc": "A well-known legal adviser active in Liyue Harbor. A brilliant young lady in whose veins runs the blood of an illuminated beast.",
+        "infoBirthDay": "28",
+        "infoBirthMonth": "7",
         "sayings": [
             "Hello\tMy name is Yanfei, top legal expert in Liyue — and for the avoidance of doubt, no one else comes close! From commercial litigation, to civil mediation, to criminal lawsuits, I'm fully versed in every area of the law, and I guarantee you a swift and satisfactory conclusion to your case! My contact details... Where should I write this down? ...Hmm, paper will just get lost, and it'll only rub off if I write it on the back of your hand, so... Aha! I know, I'll just write it here, on the clothes of this... whatever this thing is that follows you around.",
             "Chat: The Law\tI'll remind you again: The law can be both a help and a hindrance.",
@@ -5995,6 +6113,8 @@
         "cvJapanese": "門脇舞以",
         "cvKorean": "Yu Hye-ji",
         "desc": "Streetward Rambler's youngest disciple. A gentle and caring \"little adult.\"",
+        "infoBirthDay": "6",
+        "infoBirthMonth": "3",
         "sayings": [
             "Hello\tHello, I'm Yaoyao, a lowly disciple of the adeptus, Streetward Rambler. It's a pleasure to make your acquaintance! If you encounter any difficulties outdoors... then lemme help you! Oh, by the way, I brought some Fried Radish Balls with me, help yourself! Don't eat too many, though — too much oily stuff is hard work for your body. If you're still hungry, I also brought a freshly washed radish and some vinegar, so I could make you a shredded radish salad if you want~",
             "Chat: Proverbs\t\"Don't put off until tomorrow what you can do today!\" C'mon, let's get a move on!",
@@ -6088,6 +6208,8 @@
         "cvJapanese": "遠藤綾",
         "cvKorean": "Min Ah",
         "desc": "A mysterious person who claims to work for the Ministry of Civil Affairs, but is a \"non-entity\" on the Ministry of Civil Affairs' list.",
+        "infoBirthDay": "20",
+        "infoBirthMonth": "4",
         "sayings": [
             "Hello\tHello, Traveler. Call me Yelan. I think you may need my help, and I just so happen to be interested in some information you have. In other words — you scratch my back, I'll scratch yours.",
             "Chat: Tip-Off\tI got a new letter from an informant. Looks like the situation has changed again.",
@@ -6183,6 +6305,8 @@
         "cvJapanese": "植田佳奈",
         "cvKorean": "Park Shin-hee",
         "desc": "Owner of Naganohara Fireworks. Known as the \"Queen of the Summer Festival,\" she excels in her craft of creating fireworks that symbolize people's hopes and dreams.",
+        "infoBirthDay": "21",
+        "infoBirthMonth": "6",
         "sayings": [
             "Elemental Skill: I\tTime for a light show!",
             "Elemental Skill: II\tThe fuse is lit!",
@@ -6281,6 +6405,8 @@
         "cvJapanese": "小岩井ことり & Yang Yang",
         "cvKorean": "Sah Moon-young & Yang Yang",
         "desc": "A renowned Liyue opera singer who is skilled in both playwriting and singing. Her style is one-of-a-kind, exquisite and delicate, much like the person herself.",
+        "infoBirthDay": "21",
+        "infoBirthMonth": "5",
         "sayings": [
             "Hello\tAs the saying goes, you never truly know someone until you meet them in person, and at long last, I finally have the great honor of meeting you today. My name is Yun Jin, and I am humbled to be the director of the Yun-Han Opera Troupe. We have been performing at Heyu Tea House as of late, and we'd be honored to have you attend a performance sometime.",
             "Chat: Sensitive Topic\tMy waistband has been feeling a little snug these last couple of days... Methinks I perchance have overindulged...",
@@ -6376,6 +6502,8 @@
         "cvJapanese": "前野智昭",
         "cvKorean": "Pyo Young-jae",
         "desc": "A mysterious expert contracted by the Wangsheng Funeral Parlor. Extremely knowledgeable in all things.",
+        "infoBirthDay": "31",
+        "infoBirthMonth": "12",
         "sayings": [
             "Hello\tA new contract? Okay. I'm still on leave, but I can accompany you for a while. What name should I use on the contract? I have a great many names, though when on leave I tend to go by Zhongli. And you, Traveler? What name will you be signing on this contract?",
             "Chat: Journeys\tEvery journey has its final day. Don't rush.",

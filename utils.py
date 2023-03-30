@@ -127,9 +127,12 @@ def get_avatar_info(repo, textMapHash):
             if avatar_name not in avatar2info:
                 continue
             for field, value_hash in info.items():
-                if "textmaphash" in field.lower():
+                if re.search("(textmaphash|birth)", field.lower()):
                     field = field.replace("TextMapHash", "")
-                    value = textMapHash.get(str(value_hash), "")
+                    value = textMapHash.get(
+                        str(value_hash),
+                        str(value_hash) if "birth" in field.lower() else "",
+                    )
                     if value:
                         avatar2info[avatar_name][field] = value
 
@@ -272,9 +275,7 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info, lang):
                 else:
                     dialogs.append(sub_dialog)
                 continue
-            dialogs.append(
-                [f"{role}\t{topic}", f"{avatar}\t{content}"]
-            )
+            dialogs.append([f"{role}\t{topic}", f"{avatar}\t{content}"])
     return dialogs
 
 
