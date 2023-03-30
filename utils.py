@@ -126,22 +126,12 @@ def get_avatar_info(repo, textMapHash):
             avatar_name = id2avatar[str(info["avatarId"])]
             if avatar_name not in avatar2info:
                 continue
-            avatar2info[avatar_name]["native"] = textMapHash.get(
-                str(info["avatarNativeTextMapHash"]), ""
-            )
-            avatar2info[avatar_name]["title"] = textMapHash.get(
-                str(info["avatarTitleTextMapHash"]), ""
-            )
-            avatar2info[avatar_name]["constellation"] = textMapHash.get(
-                str(info["avatarConstellationBeforTextMapHash"]), ""
-            )
-            avatar2info[avatar_name]["element"] = textMapHash.get(
-                str(info["avatarVisionBeforTextMapHash"]), ""
-            )
-            if "infoBirthMonth" in info and "infoBirthDay" in info:
-                avatar2info[avatar_name]["birthday"] = "{:d}.{:d}".format(
-                    info["infoBirthMonth"], info["infoBirthDay"]
-                )
+            for field, value_hash in info.items():
+                if "textmaphash" in field.lower():
+                    field = field.replace("TextMapHash", "")
+                    value = textMapHash.get(str(value_hash), "")
+                    if value:
+                        avatar2info[avatar_name][field] = value
 
     with open(
         os.path.join(repo, "ExcelBinOutput/FettersExcelConfigData.json"),

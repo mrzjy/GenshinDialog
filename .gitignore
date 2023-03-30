@@ -10,6 +10,7 @@ __pycache__/
 .Python
 tmp.py
 tmp.txt
+tmp.xlsx
 build/
 develop-eggs/
 dist/
