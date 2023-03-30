@@ -138,9 +138,9 @@ def get_avatar_info(repo, textMapHash):
             avatar2info[avatar_name]["element"] = textMapHash.get(
                 str(info["avatarVisionBeforTextMapHash"]), ""
             )
-            if "InfoBirthMonth" in info and "InfoBirthDay" in info:
+            if "infoBirthMonth" in info and "infoBirthDay" in info:
                 avatar2info[avatar_name]["birthday"] = "{:d}.{:d}".format(
-                    info["InfoBirthMonth"], info["InfoBirthDay"]
+                    info["infoBirthMonth"], info["infoBirthDay"]
                 )
 
     with open(
