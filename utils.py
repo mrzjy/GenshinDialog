@@ -1,4 +1,5 @@
 import json
+import random
 import re
 import os
 from collections import Counter
@@ -46,7 +47,7 @@ class GenshinLoader:
         ) as f:
             self.raw_dialog_list = json.load(f)
 
-    def process_dialog(self, max_utter=1000):
+    def process_dialog(self, max_utter=1000, ignore_dialogue_branch=False):
         """generate readable in-game conversations"""
         # from story line
         dialog_list = extract_dialogs_from_storylines(
@@ -55,6 +56,7 @@ class GenshinLoader:
             self.map_npcId_to_name,
             max_utter,
             self.lang,
+            ignore_dialogue_branch
         )
 
         # from avatar introduction
@@ -182,7 +184,7 @@ def get_avatar_info(repo, textMapHash):
 
 
 def extract_dialogs_from_storylines(
-    raw_dialog_list, map_hash_to_txt, map_npcId_to_name, max_utter, lang
+    raw_dialog_list, map_hash_to_txt, map_npcId_to_name, max_utter, lang, ignore_dialogue_branch=False
 ):
     map_id_to_utterance = {}
 
@@ -204,6 +206,7 @@ def extract_dialogs_from_storylines(
             all_flows.append(cur_flow)
             return
         else:
+            # traverse all possible branches
             for next_uid in map_id_to_utterance[cur_uid]["nextDialogs"]:
                 if next_uid in cur_flow:  # must not form a cycle
                     continue
@@ -217,7 +220,12 @@ def extract_dialogs_from_storylines(
             continue
         cur_dialog_flows = []
         trace_dialog_flow([uid], cur_dialog_flows)
-        dialog_flows.extend(cur_dialog_flows)
+        if cur_dialog_flows:
+            if ignore_dialogue_branch:
+                cur_dialog_flows.sort(key=lambda li: len(li), reverse=True)
+                dialog_flows.append(cur_dialog_flows[0])
+            else:
+                dialog_flows.extend(cur_dialog_flows)
 
     dialog_list = []
     for dialog_flow in dialog_flows:

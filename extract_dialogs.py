@@ -16,18 +16,24 @@ if __name__ == "__main__":
     )
     parser.add_argument("--lang", default="CHS", type=str, help="language type")
     parser.add_argument(
+        "--ignore_dialogue_branch",
+        action="store_true",
+        help="whether to ignore branch (only choose a random branch)",
+    )
+    parser.add_argument(
         "--n_utter",
         default=1000,
         type=int,
         help="max number of utterances for a session",
     )
     args = parser.parse_args()
-
     # load genshin data
     genshin = GenshinLoader(repo=args.repo, lang=args.lang)
 
     # process
-    output_dialog_list = genshin.process_dialog(max_utter=args.n_utter)
+    output_dialog_list = genshin.process_dialog(
+        max_utter=args.n_utter, ignore_dialogue_branch=args.ignore_dialogue_branch
+    )
 
     # output avatar
     output_dir = "extracted_dialog"
