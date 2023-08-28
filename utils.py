@@ -190,7 +190,8 @@ def extract_dialogs_from_storylines(
 
     # dialogs from story lines
     for utter in raw_dialog_list:
-        map_id_to_utterance[utter["id"]] = utter
+        map_id_to_utterance[utter["GFLDJMJKIKE"]] = utter
+        map_id_to_utterance[utter["GFLDJMJKIKE"]]["id"] = utter["GFLDJMJKIKE"]
 
     for uid, utter in map_id_to_utterance.items():
         for next_uid in utter["nextDialogs"]:
