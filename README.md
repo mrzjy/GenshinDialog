@@ -2,6 +2,8 @@
 
 本项目抽取原神游戏的对话语料、材料、武器等语料
 
+(Also take a look at [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue) if you're interested)
+
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
 - Current game version 3.5
