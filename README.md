@@ -2,7 +2,9 @@
 
 本项目抽取原神游戏的对话语料、材料、武器等语料
 
-(Also take a look at [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue) if you're interested)
+Other projects you might be interested in:
+- [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkail: Star Rail 
+- [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
 
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
