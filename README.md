@@ -16,7 +16,7 @@ This project simply extracts all character conversations in Genshin Impact, in a
 |:-------------------------------:|:----------------------------------------------------:|
 |  Total num of roles (speakers)  |                        2,418                         |
 |     Total num of utterances     |                       158,039                        |
-| Average num of turns per dialog |                         27.14                        |
+| Average num of turns per dialog |                        9.09                         |
 
 - Note
 
@@ -84,7 +84,7 @@ Python 3.6
 3. Run extract_dialogs.py file
 ~~~
 // Command line
-python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS
+python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --ignore_dialogue_branch
 
 // The output are like the following
 Below are string variables that appear in dialogs...
@@ -125,10 +125,10 @@ Below are string variables that appear in dialogs...
 	1	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLB]}
 	1	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLC]}
 
-Total num of dialogs: 109189 (103524 storyline + 5665 avatar description)
-Total num of unique utterances: 169763
-Total num of unique talking roles: 2418
-Average num of turns per dialog: 27.141424502468197
+Total num of dialogs: 20630 (14965 storyline + 5665 avatar description)
+Total num of unique utterances: 158396
+Total num of unique talking roles: 2417
+Average num of turns per dialog: 9.094280174503151
 
 Output avatar at extracted_dialog/avatar_CHS.json
 Output dialog at extracted_dialog/dialog_CHS.json
