@@ -161,7 +161,7 @@ Notes:
 3. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
 4. There are string variables in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
 
-### Know Issues
+### Known Issues
 
 1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches.
 2. Some dialogues are incomplete, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
