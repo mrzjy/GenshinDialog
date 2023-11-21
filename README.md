@@ -5,6 +5,7 @@
 Other projects you might be interested in:
 - [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkail: Star Rail 
 - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
+  - Recommended: Typically this is where you could get more complete dialogues throughout various quests, together with quest descriptions
 
 This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
 
@@ -163,6 +164,7 @@ Notes:
 ### Know Issues
 
 1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches.
+2. Some dialogues are incomplete, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
 
 
 ### Extract miscellaneous things
