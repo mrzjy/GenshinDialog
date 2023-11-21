@@ -73,11 +73,10 @@ class GenshinLoader:
         num_turns = []
         for dialog in dialog_list:
             num_turns.append(len(dialog))
-            for sentence in dialog:
-                string_var_counter.update(re.findall(regexp_string_var, sentence))
-                speaker, sentence = sentence.split("\t")
-                sentence_set.add(sentence)
-                speaker_set.add(speaker)
+            for utterance in dialog:
+                string_var_counter.update(re.findall(regexp_string_var, utterance["content"]))
+                sentence_set.add(utterance["content"])
+                speaker_set.add(utterance["role"])
         print("Below are string variables that appear in dialogs...")
         print("\tFrequency\tVariable")
         for string_var, count in string_var_counter.most_common():
@@ -245,7 +244,7 @@ def extract_dialogs_from_storylines(
                 role_hash = str(map_id_to_utterance[uid]["talkRoleNameTextMapHash"])
                 try_role_name = map_hash_to_txt.get(role_hash, "")
                 speaker = try_role_name if try_role_name == "" else "unknown"
-            context.append(speaker + "\t" + sentence)
+            context.append({"role": speaker, "content": sentence})
 
         # each dialog must involves at least 2 speakers
         if len(context) and len(speaker_set) > 1:
@@ -271,12 +270,9 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info, lang):
                     if len(splits) != 2:
                         splits = [splits[0], "：".join(splits[1:])]
 
-                    sub_dialog.append(
-                        "{}\t{}".format(
-                            splits[0] if splits[0] != "{NICKNAME}" else role,
-                            splits[1],
-                        )
-                    )
+                    role = splits[0] if splits[0] != "{NICKNAME}" else role
+                    content = splits[1]
+                    sub_dialog.append({"role": role, "content": content})
 
                 if len(sub_dialog) > max_utter:
                     for i in range(len(sub_dialog) - max_utter):
@@ -284,7 +280,10 @@ def extract_dialogs_from_avatarInfo(max_utter, avatar2info, lang):
                 else:
                     dialogs.append(sub_dialog)
                 continue
-            dialogs.append([f"{role}\t{topic}", f"{avatar}\t{content}"])
+            dialogs.append([
+                {"role": role, "content": topic},
+                {"role": avatar, "content": content}
+            ])
     return dialogs
 
 

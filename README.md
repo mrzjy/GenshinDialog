@@ -28,27 +28,46 @@ There are scenarios where user chooses different responses and thus lead to diff
 ~~~
 # lang=EN
 [
-    "Paimon\tOoh! Did you just feel the elements of the world?",
-    "Paimon\tSeems all you had to do was just touch the statue and you got the power of Anemo!",
-    "Paimon\tAs much as they may want it, people in this world can never get a hold of powers as easily as you...",
-    "Traveller\tI think I know why, it's because...",
-    "Paimon\tAh-ha, it's because you're not from this world to begin with.",
-    "Paimon\tIf we keep heading west from here, we'll eventually reach Mondstadt, the City of Freedom.",
-    "Paimon\tMondstadt is the city of wind, because they worship the God of Anemo.",
-    "Paimon\tSo perhaps, because you got power from the God of Anemo, you can find some clues there.",
-    "Paimon\tThere are also lots of bards there, so perhaps one of them has heard news of your {Msister}{Fbrother}.",
-    "Paimon\tLet's move then!",
-    "Paimon\tThe elements in this world responded to your prayers and Paimon thinks that's a lovely sign."
+   {
+      "role":"Signboard",
+      "content":"\"Summer-special grape juice. Two bottles for one Mora.\""
+   },
+   {
+      "role":"Paimon",
+      "content":"What a bargain!"
+   },
+   {
+      "role":"Signboard",
+      "content":"\"Sold out. Thank you.\""
+   },
+   {
+      "role":"Paimon",
+      "content":"Alright then..."
+   }
 ],
 # lang=CHS
 [
-    "标识牌\t「夏日特供葡萄汁 两瓶一摩拉」",
-    "派蒙\t居然有这么好的事！",
-    "标识牌\t「已售罄 多谢惠顾」",
-    "派蒙\t好吧…"
+   {
+      "role":"标识牌",
+      "content":"「夏日特供葡萄汁 两瓶一摩拉」"
+   },
+   {
+      "role":"派蒙",
+      "content":"居然有这么好的事！"
+   },
+   {
+      "role":"标识牌",
+      "content":"「已售罄 多谢惠顾」"
+   },
+   {
+      "role":"派蒙",
+      "content":"好吧…"
+   }
 ],
 ~~~
+
 - Random avatars
+
 ~~~
 # lang=JP
 "七七": {
@@ -73,7 +92,7 @@ There are scenarios where user chooses different responses and thus lead to diff
 
 ### Requirement
 ~~~
-Python 3.6
+Python 3.6+
 ~~~
 
 ### Extract dialogs
@@ -136,10 +155,14 @@ Output dialog at extracted_dialog/dialog_CHS.json
 
 Notes:
 
-1. output is a json file (could be viewed by most txt viewer), the structure is a list of list, it's a list of dialog and each dialog is then a list of utterance
+1. The dialogue output is in jsonl format: each line is a JSON structure. The JSON structure is a list of utterance dicts (containing role and content fields (which is just like ChatGPT messages))
 2. There are already sampled outputs in the extracted_dialog folder for 3 languages, but you need to run the command yourself in order to get ***FULL dialogs*** (output file size is around 100+MB for each language)
 3. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
 4. There are string variables in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
+
+### Know Issues
+
+1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches.
 
 
 ### Extract miscellaneous things
