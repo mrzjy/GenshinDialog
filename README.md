@@ -207,7 +207,7 @@ Notes:
 
 ### Known Issues
 
-1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches.
+1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches. This is why raw_dialog.jsonl is also provided (you can restore dialogue branches yourself).
 2. Some dialogues are incomplete, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
 
 
