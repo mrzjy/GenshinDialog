@@ -1,5 +1,4 @@
 import json
-import random
 import re
 import os
 from collections import Counter
@@ -50,7 +49,7 @@ class GenshinLoader:
     def process_dialog(self, max_utter=1000, ignore_dialogue_branch=False):
         """generate readable in-game conversations"""
         # from story line
-        dialog_list = extract_dialogs_from_storylines(
+        dialog_list, nodes_per_session = extract_dialogs_from_storylines(
             self.raw_dialog_list,
             self.map_hash_to_txt,
             self.map_npcId_to_name,
@@ -90,7 +89,7 @@ class GenshinLoader:
         print(f"Total num of unique talking roles: {len(speaker_set)}")
         print(f"Average num of turns per dialog: {sum(num_turns) / len(num_turns)}")
         print()
-        return dialog_list
+        return dialog_list, nodes_per_session
 
 
 def remove_tags(text):
@@ -213,19 +212,53 @@ def extract_dialogs_from_storylines(
                 next_flow = cur_flow + [next_uid]
                 trace_dialog_flow(next_flow, all_flows)
 
+    def get_unique_nodes(cur_flow, relevant_nodes):
+        cur_uid = cur_flow[-1]
+        relevant_nodes.add(cur_uid)
+        if cur_uid not in map_id_to_utterance:
+            return
+        if len(map_id_to_utterance[cur_uid]["nextDialogs"]) == 0 and len(cur_flow) >= 2:
+            return
+        else:
+            # traverse all possible branches
+            for next_uid in map_id_to_utterance[cur_uid]["nextDialogs"]:
+                if next_uid in cur_flow:  # must not form a cycle
+                    continue
+                next_flow = cur_flow + [next_uid]
+                get_unique_nodes(next_flow, relevant_nodes)
+
+
     dialog_flows = []
+    nodes_per_session = []
     for uid, utter in map_id_to_utterance.items():
         # only trace dialog flows from dialog beginnings
         if "has_previous" in utter.keys() or not len(utter["nextDialogs"]):
             continue
         cur_dialog_flows = []
         trace_dialog_flow([uid], cur_dialog_flows)
+        unique_nodes = set()
+        get_unique_nodes([uid], unique_nodes)
         if cur_dialog_flows:
             if ignore_dialogue_branch:
                 cur_dialog_flows.sort(key=lambda li: len(li), reverse=True)
                 dialog_flows.append(cur_dialog_flows[0])
             else:
                 dialog_flows.extend(cur_dialog_flows)
+
+        nodes = []
+        for n in unique_nodes:
+            if n not in map_id_to_utterance:
+                continue
+            info = {
+                "role": get_role(n, map_npcId_to_name, map_id_to_utterance, map_hash_to_txt, lang=lang)
+            }
+            for k, v in map_id_to_utterance[n].items():
+                if k in {"id", "nextDialogs"}:
+                    info[k] = v
+                elif k == 'talkContentTextMapHash':
+                    info["content"] = map_hash_to_txt.get(str(v), "")
+            nodes.append(info)
+        nodes_per_session.append(nodes)
 
     dialog_list = []
     for dialog_flow in dialog_flows:
@@ -249,7 +282,7 @@ def extract_dialogs_from_storylines(
         # each dialog must involves at least 2 speakers
         if len(context) and len(speaker_set) > 1:
             dialog_list.append(context[-max_utter:])
-    return dialog_list
+    return dialog_list, nodes_per_session
 
 
 def extract_dialogs_from_avatarInfo(max_utter, avatar2info, lang):

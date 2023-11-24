@@ -7,7 +7,7 @@ Other projects you might be interested in:
 - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
   - Recommended: Typically this is where you could get more complete dialogues throughout various quests, together with quest descriptions
 
-This project simply extracts all character conversations in Genshin Impact, in a simple format of "speaker \t utterance"
+This project simply extracts all character conversations in Genshin Impact in a chatgpt-message-like format
 
 - Current game version 4.2
 
@@ -25,7 +25,32 @@ stats above are from lang=CHS, which is slightly different with other languages
 
 There are scenarios where user chooses different responses and thus lead to different dialog path, each path is treated as a unique dialog, which is why you might see multiple dialogs that share most content except only for one or two utterances.
 
-- Random samples
+- Random avatar
+
+~~~
+# lang=JP
+"七七": {
+        "birthday": "3.3",
+        "constellation": "法鈴座",
+        "desc": "薬舗「不卜廬」の薬採り兼弟子、紙のように白い顔色で不死身。口数が少なく、あまり表情がない。",
+        "element": "氷",
+        "native": "不卜廬",
+        "sayings": [
+            "初めまして…\t七七、キョンシーだ。…ん？あと何だっけ。",
+            "世間話·独り言\tん、今…何を話そうとしたっけ…",
+            ...,
+            "突破した感想·結\tあなたがいてくれたおかげだ、ありがとう…もうひとつ願いを叶えてくれる？これからは七七に守らせてほしいけど、いいかな？"
+        ],
+        "story": [
+            "キャラクター詳細\tキョンシーなのだから、表情が固いことも許されるだろう。\\nキョンシーではあるが、七七はきちんと体を鍛えている。\\n記憶力は極めて悪い。それは、七七が人に対して冷たい理由の1つだった。\\n七七の外見は、ずっと亡くなった時のままであるため、実年齢は推測不可能である。\\nキョンシーを動かすには、勅令が必要だ。しかし、ある原因で七七は自分で自分に勅令を下しているのだ。",
+            ...,
+        ],
+        "title": "冷たき黄泉帰り"
+    }
+~~~
+
+- Random dialogue samples
+
 ~~~
 # lang=EN
 [
@@ -67,28 +92,38 @@ There are scenarios where user chooses different responses and thus lead to diff
 ],
 ~~~
 
-- Random avatars
+- Random raw_dialogue
+
+(You can restore dialogue branches (choices) through "nextDialogs" field)
 
 ~~~
-# lang=JP
-"七七": {
-        "birthday": "3.3",
-        "constellation": "法鈴座",
-        "desc": "薬舗「不卜廬」の薬採り兼弟子、紙のように白い顔色で不死身。口数が少なく、あまり表情がない。",
-        "element": "氷",
-        "native": "不卜廬",
-        "sayings": [
-            "初めまして…\t七七、キョンシーだ。…ん？あと何だっけ。",
-            "世間話·独り言\tん、今…何を話そうとしたっけ…",
-            ...,
-            "突破した感想·結\tあなたがいてくれたおかげだ、ありがとう…もうひとつ願いを叶えてくれる？これからは七七に守らせてほしいけど、いいかな？"
-        ],
-        "story": [
-            "キャラクター詳細\tキョンシーなのだから、表情が固いことも許されるだろう。\\nキョンシーではあるが、七七はきちんと体を鍛えている。\\n記憶力は極めて悪い。それは、七七が人に対して冷たい理由の1つだった。\\n七七の外見は、ずっと亡くなった時のままであるため、実年齢は推測不可能である。\\nキョンシーを動かすには、勅令が必要だ。しかし、ある原因で七七は自分で自分に勅令を下しているのだ。",
-            ...,
-        ],
-        "title": "冷たき黄泉帰り"
-    }
+[
+  {
+    "role": "明蕴镇告示牌",
+    "nextDialogs": [3471302, 3471303, 3471304],
+    "content": "「鉴于此前发生了二哥与中原杂碎的不幸事件，我决定再次启用这里的信息公告版。以后，但凡有值得同步的事情，都请大家在这里留言说明。」",
+    "id": 3471301
+  },
+  {
+    "role": "旅行者",
+    "nextDialogs": [3471305],
+    "content": "阅读最新的留言…",
+    "id": 3471302
+  },
+  {
+    "role": "旅行者",
+    "nextDialogs": [3471306],
+    "content": "阅读较早的留言…",
+    "id": 3471303
+  },
+  {
+    "role": "旅行者",
+    "nextDialogs": [],
+    "content": "离开",
+    "id": 3471304
+  },
+  ...
+]
 ~~~
 
 ### Requirement
@@ -96,12 +131,21 @@ There are scenarios where user chooses different responses and thus lead to diff
 Python 3.6+
 ~~~
 
-### Extract dialogs
+### Steps
 1. Get GenshinData from [Dim's project](https://github.com/Dimbreath/GenshinData), you could git clone or download the zip and extract it.
 
 **Note**: Search for yourself where Dim's project data is... (No longer in Github)
 
-3. Run extract_dialogs.py file
+2. Run dialogue extraction code.
+
+**Note**:
+
+This process results in 3 output files:
+
+- avatar.json: parsed avatar information and descriptions
+- dialog.jsonl: parsed Genshin dialogues
+- raw_dialog.jsonl: raw Genshin dialogues (you can restore different dialogue branches yourself)
+
 ~~~
 // Command line
 python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --ignore_dialogue_branch
