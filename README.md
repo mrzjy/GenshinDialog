@@ -4,7 +4,7 @@ This project simply extracts all character conversations in Genshin Project, in 
 本项目抽取原神游戏的对话语料、材料、武器等语料
 
 Other projects you might be interested in:
-- [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkail: Star Rail 
+- [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkai: Star Rail 
 - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
   - Recommended: Typically this is where you could get more complete dialogues throughout various quests, together with quest descriptions
 
