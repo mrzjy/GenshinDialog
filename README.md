@@ -1,4 +1,5 @@
 # GenshinDialog
+This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
 
 本项目抽取原神游戏的对话语料、材料、武器等语料
 
@@ -17,7 +18,7 @@ This project simply extracts all character conversations in Genshin Impact in a 
 |:-------------------------------:|:----------------------------------------------------:|
 |  Total num of roles (speakers)  |                        2,418                         |
 |     Total num of utterances     |                       158,039                        |
-| Average num of turns per dialog |                        9.09                         |
+| Average num of turns per dialog |                        9.09                          |
 
 - Note
 
