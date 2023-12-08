@@ -12,7 +12,7 @@ This project simply extracts all character conversations in Genshin Impact in a 
 
 - Current game version 4.2
 
-**Welcome to the nation of Hydro !!**
+> **I, Focalors, hereby welcome you to the Nation of Hydro!**
 
 |              Stat               |                        Count                         | 
 |:-------------------------------:|:----------------------------------------------------:|
