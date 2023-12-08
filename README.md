@@ -1,22 +1,35 @@
 # GenshinDialog
 This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
-赶紧的
 
-- Samples of random dialog sessions
-~~~
-# lang=EN
-['Jean\tThank you for accepting our invitation, traveler.', 'PLAYER\tGoodbye.']
-['Alois\tUgh...', 'PLAYER\tAllow me.', 'Noelle\t#Oh? ...You want to escort him yourself, {NICKNAME}?']
-['???\tHow about you let me take over?', 'PLAYER\tThe black market?']
+本项目抽取原神游戏的对话语料、材料、武器等语料
 
-# lang=CHS
-['香菱\t嗯，少一种「噼咔」的感觉。', '派蒙\t这么一说确实不够「噼咔」呢。', 'PLAYER\t为什么派蒙能明白？！', '派蒙\t哼哼哼。']
-['清昼\t呵呵，「彩头」…也不知道这个词是谁教他们的。', 'PLAYER\t那你和梵米尔的比试怎么办？']
-['派蒙\t对呀对呀！', 'PLAYER\t画作承载的是记忆。', '派蒙\t是的！', 'PLAYER\t别轻易放弃与回忆有关的东西。']
+Other projects you might be interested in:
+- [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkail: Star Rail 
+- [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
+  - Recommended: Typically this is where you could get more complete dialogues throughout various quests, together with quest descriptions
+
+This project simply extracts all character conversations in Genshin Impact in a chatgpt-message-like format
+
+- Current game version 4.2
+
+**Welcome to the nation of Hydro !!**
+
+|              Stat               |                        Count                         | 
+|:-------------------------------:|:----------------------------------------------------:|
+|  Total num of roles (speakers)  |                        2,418                         |
+|     Total num of utterances     |                       158,039                        |
+| Average num of turns per dialog |                        9.09                          |
+
+- Note
+
+stats above are from lang=CHS, which is slightly different with other languages
+
+There are scenarios where user chooses different responses and thus lead to different dialog path, each path is treated as a unique dialog, which is why you might see multiple dialogs that share most content except only for one or two utterances.
+
+- Random avatar
+
 ~~~
-- Samples of avatar information
-~~~
-# lang=JA
+# lang=JP
 "七七": {
         "birthday": "3.3",
         "constellation": "法鈴座",
@@ -37,30 +50,172 @@ This project simply extracts all character conversations in Genshin Project, in 
     }
 ~~~
 
+- Random dialogue samples
+
+~~~
+# lang=EN
+[
+   {
+      "role":"Signboard",
+      "content":"\"Summer-special grape juice. Two bottles for one Mora.\""
+   },
+   {
+      "role":"Paimon",
+      "content":"What a bargain!"
+   },
+   {
+      "role":"Signboard",
+      "content":"\"Sold out. Thank you.\""
+   },
+   {
+      "role":"Paimon",
+      "content":"Alright then..."
+   }
+],
+# lang=CHS
+[
+   {
+      "role":"标识牌",
+      "content":"「夏日特供葡萄汁 两瓶一摩拉」"
+   },
+   {
+      "role":"派蒙",
+      "content":"居然有这么好的事！"
+   },
+   {
+      "role":"标识牌",
+      "content":"「已售罄 多谢惠顾」"
+   },
+   {
+      "role":"派蒙",
+      "content":"好吧…"
+   }
+],
+~~~
+
+- Random raw_dialogue
+
+(You can restore dialogue branches (choices) through "nextDialogs" field)
+
+~~~
+[
+  {
+    "role": "明蕴镇告示牌",
+    "nextDialogs": [3471302, 3471303, 3471304],
+    "content": "「鉴于此前发生了二哥与中原杂碎的不幸事件，我决定再次启用这里的信息公告版。以后，但凡有值得同步的事情，都请大家在这里留言说明。」",
+    "id": 3471301
+  },
+  {
+    "role": "旅行者",
+    "nextDialogs": [3471305],
+    "content": "阅读最新的留言…",
+    "id": 3471302
+  },
+  {
+    "role": "旅行者",
+    "nextDialogs": [3471306],
+    "content": "阅读较早的留言…",
+    "id": 3471303
+  },
+  {
+    "role": "旅行者",
+    "nextDialogs": [],
+    "content": "离开",
+    "id": 3471304
+  },
+  ...
+]
+~~~
+
 ### Requirement
 ~~~
-Python 3.6
+Python 3.6+
 ~~~
 
 ### Steps
 1. Get GenshinData from [Dim's project](https://github.com/Dimbreath/GenshinData), you could git clone or download the zip and extract it.
 
-2. Run extract_dialogs.py file
+**Note**: Search for yourself where Dim's project data is... (No longer in Github)
+
+2. Run dialogue extraction code.
+
+**Note**:
+
+This process results in 3 output files:
+
+- avatar.json: parsed avatar information and descriptions
+- dialog.jsonl: parsed Genshin dialogues
+- raw_dialog.jsonl: raw Genshin dialogues (you can restore different dialogue branches yourself)
+
 ~~~
 // Command line
-python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --n_utter=4
-~~~
+python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --ignore_dialogue_branch
 
-3. See the output dialog and other info at "extracted_dialog"
+// The output are like the following
+Below are string variables that appear in dialogs...
+	Frequency	Variable
+	84388	{NICKNAME}
+	2746	{MATEAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_SISTER]}
+	1273	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_SISTERA]}
+	1051	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_FEMALE_PRONOUN_SHE]}
+	944	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_SISTER|INFO_FEMALE_PRONOUN_BROTHER]}
+	896	{PLAYERAVATARSEXPRO[INFO_FEMALE_PRONOUN_SHE|INFO_MALE_PRONOUN_HE]}
+	490	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYC|INFO_FEMALE_PRONOUN_GIRLC]}
+	468	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_SHE|INFO_FEMALE_PRONOUN_HE]}
+	441	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_YING|INFO_FEMALE_PRONOUN_BROTHER]}
+	436	{PLAYERAVATARSEXPRO[INFO_FEMALE_PRONOUN_SISTER|INFO_MALE_PRONOUN_BROTHER]}
+	408	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BIGBROTHER|INFO_FEMALE_PRONOUN_BIGSISTER]}
+	336	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_GIRLD|INFO_FEMALE_PRONOUN_BOYD]}
+	302	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOY|INFO_FEMALE_PRONOUN_GIRL]}
+	211	{MATEAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_FEMALE_PRONOUN_SHE]}
+	192	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_YING]}
+	192	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_UNCLE|INFO_FEMALE_PRONOUN_AUNT]}
+	144	{MATEAVATARSEXPRO[INFO_MALE_PRONOUN_BOY|INFO_FEMALE_PRONOUN_GIRL]}
+	80	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_YING|INFO_FEMALE_PRONOUN_KONG]}
+	64	{RUBY[D]Otets}
+	36	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HERO|INFO_FEMALE_PRONOUN_HEROINE]}
+	34	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_SHE|INFO_MALE_PRONOUN_HE]}
+	33	{MATEAVATARSEXPRO[INFO_MALE_PRONOUN_BOYD|INFO_FEMALE_PRONOUN_GIRLD]}
+	31	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_MALE_PRONOUN_SHE]}
+	16	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROANDSIS|INFO_FEMALE_PRONOUN_SISANDSIS]}
+	16	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_SISTER]}
+	15	{QuestNpcID}
+	14	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_CUTEBIGBROTHER|INFO_FEMALE_PRONOUN_CUTEBIGSISTER]}
+	11	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_MALE_PRONOUN_BROANDSIS]}
+	8	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_XIABOY|INFO_FEMALE_PRONOUN_XIAGIRL]}
+	5	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYE|INFO_FEMALE_PRONOUN_GIRLE]}
+	4	{MATEAVATARSEXPRO[INFO_FEMALE_PRONOUN_HE|INFO_MALE_PRONOUN_SHE]}
+	2	{QuestGatherID}
+	2	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLA]}
+	1	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLB]}
+	1	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLC]}
+
+Total num of dialogs: 20630 (14965 storyline + 5665 avatar description)
+Total num of unique utterances: 158396
+Total num of unique talking roles: 2417
+Average num of turns per dialog: 9.094280174503151
+
+Output avatar at extracted_dialog/avatar_CHS.json
+Output dialog at extracted_dialog/dialog_CHS.json
+~~~
 
 Notes:
 
-1. Each line of the output corresponds to a dialog session, which contains at most n_utter utterances)
-2. There are already extracted outputs in the extracted_dialog folder for 4 languages
+1. The dialogue output is in jsonl format: each line is a JSON structure. The JSON structure is a list of utterance dicts (containing role and content fields (which is just like ChatGPT messages))
+2. There are already sampled outputs in the extracted_dialog folder for 3 languages, but you need to run the command yourself in order to get ***FULL dialogs*** (output file size is around 100+MB for each language)
 3. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
-4. There are string variables in the dialogs, which depend on one's main character choice in the game, like the following:
+4. There are string variables in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
+
+### Known Issues
+
+1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches. This is why raw_dialog.jsonl is also provided (you can restore dialogue branches yourself).
+2. Some dialogues are incomplete, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
+
+
+### Extract miscellaneous things
 ~~~
-{NICKNAME}
-{PLAYERAVATAR#SEXPRO[INFO_MALE_PRONOUN_BIGBROTHER|INFO_FEMALE_PRONOUN_BIGSISTER]}
-{PLAYERAVATAR#SEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLA]}
+// Command line
+python extract_misc.py --repo=PATH/TO/GenshinData --lang=CHS
+
+// This ends in excel files generated in extracted_misc
 ~~~
