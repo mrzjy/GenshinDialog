@@ -1,7 +1,7 @@
 # GenshinDialog
-This project simply extracts all character conversations in Genshin Project, in a simple format of "speaker \t utterance"
+This project simply extracts all character conversations in Genshin Project from the legendary [Dimbreath](https://github.com/Dimbreath)'s works.
 
-本项目抽取原神游戏的对话语料、材料、武器等语料
+本项目抽取原神游戏的对话语料、材料、武器等语料，感谢 [Dimbreath](https://github.com/Dimbreath) 的神奇项目。
 
 Other projects you might be interested in:
 - [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkai: Star Rail 
