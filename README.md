@@ -8,6 +8,8 @@ Other projects you might be interested in:
 - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
   - Recommended: Typically this is where you could get more complete dialogues throughout various quests, together with quest descriptions
 
+### Description
+
 This project simply extracts all character conversations in Genshin Impact in a chatgpt-message-like format
 
 - Current game version 4.2
@@ -22,11 +24,11 @@ This project simply extracts all character conversations in Genshin Impact in a 
 
 - Note
 
-stats above are from lang=CHS, which is slightly different with other languages
+Stats above are from lang=CHS, which is slightly different from other languages
 
-There are scenarios where user chooses different responses and thus lead to different dialog path, each path is treated as a unique dialog, which is why you might see multiple dialogs that share most content except only for one or two utterances.
+We provide 3 examples of what this project extracts:
 
-- Random avatar
+- Random avatar example
 
 ~~~
 # lang=JP
@@ -50,7 +52,7 @@ There are scenarios where user chooses different responses and thus lead to diff
     }
 ~~~
 
-- Random dialogue samples
+- Random dialogue example
 
 ~~~
 # lang=EN
@@ -93,7 +95,7 @@ There are scenarios where user chooses different responses and thus lead to diff
 ],
 ~~~
 
-- Random raw_dialogue
+- Random raw_dialogue example
 
 (You can restore dialogue branches (choices) through "nextDialogs" field)
 
@@ -137,15 +139,11 @@ Python 3.6+
 
 **Note**: Search for yourself where Dim's project data is... (No longer in Github)
 
-2. Run dialogue extraction code.
+2. Run extract_dialogs.py. This process results in 3 output files in "extracted_dialog" folder:
 
-**Note**:
-
-This process results in 3 output files:
-
-- avatar.json: parsed avatar information and descriptions
-- dialog.jsonl: parsed Genshin dialogues
-- raw_dialog.jsonl: raw Genshin dialogues (you can restore different dialogue branches yourself)
+- avatar.json: the parsed avatar information and descriptions
+- dialog.jsonl: the parsed Genshin dialogues
+- raw_dialog.jsonl: the raw Genshin dialogues (you can restore different dialogue branches yourself)
 
 ~~~
 // Command line
@@ -199,7 +197,7 @@ Output avatar at extracted_dialog/avatar_CHS.json
 Output dialog at extracted_dialog/dialog_CHS.json
 ~~~
 
-Notes:
+Note:
 
 1. The dialogue output is in jsonl format: each line is a JSON structure. The JSON structure is a list of utterance dicts (containing role and content fields (which is just like ChatGPT messages))
 2. There are already sampled outputs in the extracted_dialog folder for 3 languages, but you need to run the command yourself in order to get ***FULL dialogs*** (output file size is around 100+MB for each language)
@@ -209,7 +207,7 @@ Notes:
 ### Known Issues
 
 1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches. This is why raw_dialog.jsonl is also provided (you can restore dialogue branches yourself).
-2. Some dialogues are incomplete, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
+2. Some dialogues are **incomplete**, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
 
 
 ### Extract miscellaneous things
