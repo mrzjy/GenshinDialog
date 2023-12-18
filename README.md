@@ -1,3 +1,5 @@
+<div align=center><img src="./img/image.png"/></div>
+
 # GenshinDialog
 This project simply extracts all character conversations in Genshin Project from the legendary [Dimbreath](https://github.com/Dimbreath)'s works.
 
