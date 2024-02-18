@@ -34,15 +34,7 @@ if __name__ == "__main__":
         max_utter=args.n_utter, ignore_dialogue_branch=args.ignore_dialogue_branch
     )
 
-    # output avatar
     output_dir = "extracted_dialog"
-    output_file = os.path.join(output_dir, "avatar_{}.json".format(args.lang))
-    with open(output_file, "w", encoding="utf-8") as f:
-        json_file = json.dumps(
-            genshin.map_avatar_to_info, sort_keys=True, indent=4, ensure_ascii=False
-        )
-        print(json_file, file=f)
-    print("Output avatar at {}".format(output_file))
 
     # output dialog
     if len(output_dialog_list):
