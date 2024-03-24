@@ -338,3 +338,16 @@ def get_role(uid, map_npcId_to_name, map_id_to_utterance, map_hash_to_txt, lang=
     ):
         role = "Traveller" if lang != "CHS" else "旅行者"
     return role
+
+
+def load_json(path: str):
+    data = None
+    with open(path, "r", encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except:
+            try:
+                data = [json.loads(line) for line in f]
+            except:
+                raise Exception("Failed to load json file. You should check json validity.")
+    return data

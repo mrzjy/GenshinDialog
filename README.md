@@ -32,9 +32,15 @@ Stats above are from lang=CHS, which is slightly different from other languages
 
 We provide 4 examples of what this project extracts:
 
-#### 1. Random Avatar
+|                   Item                    |                  Output                  | Corresponding File | 
+|:-----------------------------------------:|:----------------------------------------:|:------------------:|
+|            Playable Characters            |   extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
+|                 Dialogues                 |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
+| Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
+|          (Raw) Quests Dialogues           |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
 
-(extract_avatars.py)
+
+#### 1. Random Playable Character
 
 ~~~
 # lang=JP
@@ -139,11 +145,9 @@ We provide 4 examples of what this project extracts:
 ]
 ~~~
 
-#### 4. Random Quest Dialogue
+#### 4. Random Quest
 
 (**More complete and structured version**) Genshin dialogues, with quest contexts and narrations.
-
-(extract_quest.py)
 
 ~~~
 {
@@ -244,7 +248,7 @@ Python 3.6+
    - dialog.jsonl: the parsed Genshin dialogues
    - raw_dialog.jsonl: the raw Genshin dialogues (you can restore different dialogue branches yourself)
 
-4. Run extract_quest.py. This results in 1 output file in "extracted_quest" folder:
+4. Run extract_quests.py. This results in 1 output file in "extracted_quest" folder:
 
    - **quest.jsonl**: the quest information (dialogues with quest context)
 
@@ -316,4 +320,29 @@ Note:
 python extract_misc.py --repo=PATH/TO/GenshinData --lang=CHS
 
 // This ends in excel files generated in extracted_misc
+~~~
+
+### FAQs
+
+1. What is a ".jsonl" file extension and how to load it?
+
+- See [JSON lines](https://jsonlines.org/) for an explanation
+- See the following simple function for loading json
+
+~~~python
+import json
+
+
+def load_json(path: str):
+    """utility function for loading a json file"""
+    data = None
+    with open(path, "r", encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except:
+            try:
+                data = [json.loads(line) for line in f]
+            except:
+                raise Exception("Failed to load json file. You should check json validity.")
+    return data
 ~~~
