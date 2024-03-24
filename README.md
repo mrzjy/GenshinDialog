@@ -37,7 +37,7 @@ We provide 4 examples of what this project extracts:
 |            Playable Characters            |   extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
 |                 Dialogues                 |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
 | Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
-|          (Raw) Quests Dialogues           |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
+|  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
 
 
 #### 1. Random Playable Character
@@ -65,8 +65,6 @@ We provide 4 examples of what this project extracts:
 ~~~
 
 #### 2. Random Dialogue
-
-(extract_dialogs.py)
 
 ~~~
 # lang=EN
@@ -112,8 +110,6 @@ We provide 4 examples of what this project extracts:
 #### 3. Random Raw Dialogue
 
 (You can restore dialogue branches (choices) through "nextDialogs" field)
-
-(extract_dialogs.py)
 
 ~~~
 [
@@ -250,7 +246,7 @@ Python 3.6+
 
 4. Run extract_quests.py. This results in 1 output file in "extracted_quest" folder:
 
-   - **quest.jsonl**: the quest information (dialogues with quest context)
+   - quest.jsonl: the quest information (dialogues with quest context)
 
 ~~~
 // Command line
