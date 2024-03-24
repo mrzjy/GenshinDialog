@@ -5,24 +5,16 @@ This project simply extracts all character conversations in Genshin Project from
 
 本项目抽取原神游戏的对话语料、材料、武器等语料，感谢 [Dimbreath](https://github.com/Dimbreath) 的神奇项目。
 
-Other projects you might be interested in:
-- [StarrailDialogue](https://github.com/mrzjy/StarrailDialogue): Same but for Honkai: Star Rail 
-- [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
-  - Recommended: Typically this is where you could get more complete dialogues throughout various quests, together with quest descriptions
-
 ### Description
 
 This project simply extracts all character conversations in Genshin Impact.
 
 - Current game version 4.5
 
-> **I, Focalors, hereby welcome you to the Nation of Hydro!**
-
-|              Stat               |                        Count                         | 
-|:-------------------------------:|:----------------------------------------------------:|
-|  Total num of roles (speakers)  |                        2,418                         |
-|     Total num of utterances     |                       158,039                        |
-| Average num of turns per dialog |                        9.09                          |
+|                 Stat                 |  Count  | 
+|:------------------------------------:|:-------:|
+| Total num of unique roles (speakers) |  2,422  |
+|    Total num of unique utterances    | 170,202 |
 
 - Note
 
@@ -35,7 +27,7 @@ We provide 4 examples of what this project extracts:
 |                   Item                    |                  Output                  | Corresponding File | 
 |:-----------------------------------------:|:----------------------------------------:|:------------------:|
 |            Playable Characters            |   extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
-|                 Dialogues                 |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
+|          Dialogues (Deprecated)           |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
 | Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
 |  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
 
@@ -65,6 +57,8 @@ We provide 4 examples of what this project extracts:
 ~~~
 
 #### 2. Random Dialogue
+
+(Actually this should be deprecated since there are better data (e.g., see raw_dialog and quest))
 
 ~~~
 # lang=EN
@@ -249,10 +243,11 @@ Python 3.6+
    - quest.jsonl: the quest information (dialogues with quest context)
 
 ~~~
-// Command line
-python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS --ignore_dialogue_branch
+// Command line example
+python python extract_dialogs.py --repo=PATH/TO/GenshinData --lang=CHS
 
 // The output are like the following
+Summarizing statistics:
 Below are string variables that appear in dialogs...
 	Frequency	Variable
 	84388	{NICKNAME}
@@ -280,7 +275,6 @@ Below are string variables that appear in dialogs...
 	31	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_HE|INFO_MALE_PRONOUN_SHE]}
 	16	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROANDSIS|INFO_FEMALE_PRONOUN_SISANDSIS]}
 	16	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_FEMALE_PRONOUN_SISTER]}
-	15	{QuestNpcID}
 	14	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_CUTEBIGBROTHER|INFO_FEMALE_PRONOUN_CUTEBIGSISTER]}
 	11	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BROTHER|INFO_MALE_PRONOUN_BROANDSIS]}
 	8	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_XIABOY|INFO_FEMALE_PRONOUN_XIAGIRL]}
@@ -291,13 +285,13 @@ Below are string variables that appear in dialogs...
 	1	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLB]}
 	1	{PLAYERAVATARSEXPRO[INFO_MALE_PRONOUN_BOYA|INFO_FEMALE_PRONOUN_GIRLC]}
 
-Total num of dialogs: 20630 (14965 storyline + 5665 avatar description)
-Total num of unique utterances: 158396
-Total num of unique talking roles: 2417
-Average num of turns per dialog: 9.094280174503151
+Total num of dialogs: 109549 (103524 storyline + 6025 avatar description)
+Total num of unique utterances: 170202
+Total num of unique talking roles: 2422
+Average num of turns per dialog: 27.058804735780335
 
-Output avatar at extracted_dialog/avatar_CHS.json
-Output dialog at extracted_dialog/dialog_CHS.json
+Output dialog at extracted_dialog\dialog_CHS.jsonl
+Output dialog at extracted_dialog\raw_dialog_CHS.jsonl
 ~~~
 
 Note:
@@ -342,3 +336,10 @@ def load_json(path: str):
                 raise Exception("Failed to load json file. You should check json validity.")
     return data
 ~~~
+
+2. What about other games?
+
+   - Other personal projects you might be interested in:
+     - [StarrailDialog](https://github.com/mrzjy/StarrailDialogue)
+     - [ArknightsDialog](https://github.com/mrzjy/ArknightsDialog)
+     - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data

@@ -17,7 +17,7 @@ if __name__ == "__main__":
     parser.add_argument("--lang", default="CHS", type=str, help="language type")
     parser.add_argument(
         "--ignore_dialogue_branch",
-        action="store_true",
+        action="store_false",
         help="whether to ignore branch (only choose a random branch)",
     )
     parser.add_argument(
