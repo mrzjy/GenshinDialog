@@ -13,7 +13,7 @@ def single_process(file, args):
     # load genshin data
     genshin = GenshinLoader(repo=args.repo, lang=lang)
     # output avatar
-    output_dir = "extracted_dialog"
+    output_dir = "extracted_avatar"
     output_file = os.path.join(output_dir, "avatar_{}.json".format(lang))
     with open(output_file, "w", encoding="utf-8") as f:
         json_file = json.dumps(

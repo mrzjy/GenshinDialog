@@ -12,7 +12,7 @@ Other projects you might be interested in:
 
 ### Description
 
-This project simply extracts all character conversations in Genshin Impact in a chatgpt-message-like format
+This project simply extracts all character conversations in Genshin Impact.
 
 - Current game version 4.5
 
@@ -28,9 +28,13 @@ This project simply extracts all character conversations in Genshin Impact in a 
 
 Stats above are from lang=CHS, which is slightly different from other languages
 
-We provide 3 examples of what this project extracts:
+### Example
 
-- Random avatar example
+We provide 4 examples of what this project extracts:
+
+#### 1. Random Avatar
+
+(extract_avatars.py)
 
 ~~~
 # lang=JP
@@ -54,7 +58,9 @@ We provide 3 examples of what this project extracts:
 }
 ~~~
 
-- Random dialogue example
+#### 2. Random Dialogue
+
+(extract_dialogs.py)
 
 ~~~
 # lang=EN
@@ -97,9 +103,11 @@ We provide 3 examples of what this project extracts:
 ],
 ~~~
 
-- Random raw_dialogue example
+#### 3. Random Raw Dialogue
 
 (You can restore dialogue branches (choices) through "nextDialogs" field)
+
+(extract_dialogs.py)
 
 ~~~
 [
@@ -131,6 +139,92 @@ We provide 3 examples of what this project extracts:
 ]
 ~~~
 
+#### 4. Random Quest Dialogue
+
+(**More complete and structured version**) Genshin dialogues, with quest contexts and narrations.
+
+(extract_quest.py)
+
+~~~
+{
+  "mainQuestId": 1002,
+  "mainQuestTitle": {
+    "textId": "An Impromptu Change of Plan",
+    "textType": "MainQuestTitle"
+  },
+  "mainQuestDesp": {
+    "textId": "During the rite, the appointed moment arrived. Yet when the clouds parted, a divine carcass crashed down to earth, knocking all the offerings over. Amid the chaos and confusion, the Qixing ordered that the assassin be arrested. Unable to prove your innocence, you were forced to accept the help of Childe of the Fatui, and as suggested by him, you are now headed for Jueyun Karst, a hidden abode where the adepti dwell...",
+    "textType": "MainQuestDesp"
+  },
+  "chapterTitle": {
+    "textId": "Of the Land Amidst Monoliths",
+    "textType": "ChapterTitle"
+  },
+  "chapterNum": {
+    "textId": "Chapter I: Act I",
+    "textType": "ChapterNum"
+  },
+  "subQuests": [
+    {
+      "subQuestTitle": {
+        "textId": "Search for the adepti in Jueyun Karst",
+        "textType": "IPCustomizedPartial"
+      }
+    },
+    {
+      "subQuestTitle": {
+        "textId": "Meet the adepti in Jueyun Karst",
+        "textType": "IPCustomizedPartial"
+      },
+      "items": [
+        {
+          "itemId": 3,
+          "itemType": "SingleDialog",
+          "nextItemId": 4,
+          "speakerText": {
+            "textId": "???",
+            "textType": "SpeakerKnown"
+          },
+          "dialogs": [
+            {
+              "text": {
+                "textId": "And who might we be? Those that dare enter Jueyun Karst?",
+                "textType": "DialogNormal"
+              },
+              "soundId": 10020201,
+              "nextItemId": 4
+            }
+          ]
+        },
+        {
+          "itemId": 4,
+          "itemType": "MultiDialog",
+          "speakerText": {
+            "textId": "Traveler",
+            "textType": "SpeakerPlayer"
+          },
+          "dialogs": [
+            {
+              "text": {
+                "textId": "I was sent here.",
+                "textType": "DialogNormal"
+              },
+              "soundId": 10020202,
+              "nextItemId": 6
+            },
+            {
+              "text": {
+                "textId": "Please take a look at this.",
+                "textType": "DialogNormal"
+              },
+              "soundId": 10020203,
+              "nextItemId": 6
+            }
+          ]
+        },
+        ... ...
+~~~
+
 ### Requirement
 ~~~
 Python 3.6+
@@ -139,13 +233,20 @@ Python 3.6+
 ### Steps
 1. Get GenshinData from [Dim's project](https://github.com/Dimbreath/GenshinData), you could git clone or download the zip and extract it.
 
-**Note**: Search for yourself where Dim's project data is... (No longer in Github)
+   - **Note**: Search for yourself where Dim's project data is... (No longer in Github)
 
-2. Run extract_dialogs.py. This process results in 3 output files in "extracted_dialog" folder:
+2. Run extract_avatars.py. This results in 1 output file in "extracted_avatar" folder:
 
-- avatar.json: the parsed avatar information and descriptions
-- dialog.jsonl: the parsed Genshin dialogues
-- raw_dialog.jsonl: the raw Genshin dialogues (you can restore different dialogue branches yourself)
+   - avatar.json: the parsed avatar information and descriptions
+
+3. Run extract_dialogs.py. This process results in 2 output files in "extracted_dialog" folder:
+
+   - dialog.jsonl: the parsed Genshin dialogues
+   - raw_dialog.jsonl: the raw Genshin dialogues (you can restore different dialogue branches yourself)
+
+4. Run extract_quest.py. This results in 1 output file in "extracted_quest" folder:
+
+   - **quest.jsonl**: the quest information (dialogues with quest context)
 
 ~~~
 // Command line
@@ -201,16 +302,13 @@ Output dialog at extracted_dialog/dialog_CHS.json
 
 Note:
 
-1. The dialogue output is in jsonl format: each line is a JSON structure. The JSON structure is a list of utterance dicts (containing role and content fields (which is just like ChatGPT messages))
-2. There are already sampled outputs in the extracted_dialog folder for 3 languages, but you need to run the command yourself in order to get ***FULL dialogs*** (output file size is around 100+MB for each language)
-3. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
-4. There are string variables in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
+1. There are already sampled outputs in the extracted_* folders, but you need to run the command yourself in order to get ***FULL dialogs***
+2. Language options correspond to languages in Dim's GenshinData/TextMap (e.g., CHS, JA, ES, FR, etc.)
+3. There are **string variables** in the dialogs, whose real value depends on one's main character choice in the game. Note that these string variables might have different names in different languages
 
 ### Known Issues
 
 1. The current way of dealing with dialogue branches is naive and not satisfying, must work on a better way of representing branches. This is why raw_dialog.jsonl is also provided (you can restore dialogue branches yourself).
-2. Some dialogues are **incomplete**, the relation between different sessions are unknown. (Better check out [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser) to get more complete dialogues within a quest) 
-
 
 ### Extract miscellaneous things
 ~~~
