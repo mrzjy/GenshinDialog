@@ -81,3 +81,4 @@ if __name__ == "__main__":
     get_talk(args.repo, input_path="BinOutput/Talk/NPC/*.json", output_path=f"talk_npc_{args.lang}.jsonl")
     get_talk(args.repo, input_path="BinOutput/Talk/Blossom/*.json", output_path=f"talk_blossom_{args.lang}.jsonl")
     get_talk(args.repo, input_path="BinOutput/Talk/Coop/*.json", output_path=f"talk_coop_{args.lang}.jsonl")
+    get_talk(args.repo, input_path="BinOutput/Talk/Activity/*.json", output_path=f"talk_activity_{args.lang}.jsonl")

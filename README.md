@@ -24,16 +24,17 @@ Stats above are from lang=CHS, which is slightly different from other languages
 
 We provide detailed examples of what this project extracts:
 
-| Num |                   Item                    |                  Output                  | Corresponding File | 
-|:---:|:-----------------------------------------:|:----------------------------------------:|:------------------:|
-|  1  |            Playable Characters            |   extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
-|  2  |          Dialogues (Deprecated)           |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
-|  3  | Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
-|  4  |  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
-| 5.1 |          Random Talk with Gadget          | extracted_talk/talk_gadget_{lang}.jsonl  |  extract_talks.py  |
-| 5.2 |           Random Talk with NPC            |   extracted_talk/talk_npc_{lang}.jsonl   |  extract_talks.py  |
-| 5.3 |             Random Talk Coop              |  extracted_talk/talk_coop_{lang}.jsonl   |  extract_talks.py  |
-| 5.4 |            Random Talk Blossom            | extracted_talk/talk_blossom_{lang}.jsonl |  extract_talks.py  |
+| Num |                   Item                    |                  Output                   | Corresponding File | 
+|:---:|:-----------------------------------------:|:-----------------------------------------:|:------------------:|
+|  1  |            Playable Characters            |    extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
+|  2  |          Dialogues (Deprecated)           |   extracted_dialog/dialog_{lang}.jsonl    | extract_dialogs.py |
+|  3  | Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl  | extract_dialogs.py |
+|  4  |  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl     | extract_quests.py  |
+| 5.1 |          Random Talk with Gadget          |  extracted_talk/talk_gadget_{lang}.jsonl  |  extract_talks.py  |
+| 5.2 |           Random Talk with NPC            |   extracted_talk/talk_npc_{lang}.jsonl    |  extract_talks.py  |
+| 5.3 |             Random Talk Coop              |   extracted_talk/talk_coop_{lang}.jsonl   |  extract_talks.py  |
+| 5.4 |            Random Talk Blossom            | extracted_talk/talk_blossom_{lang}.jsonl  |  extract_talks.py  |
+| 5.5 |           Random Talk Activity            | extracted_talk/talk_activity_{lang}.jsonl |  extract_talks.py  |
 
 
 #### 1. Random Playable Character
@@ -384,6 +385,41 @@ We provide detailed examples of what this project extracts:
       "nextDialogs": null,
       "role": "秋月",
       "content": "位置大概在这里…给你标在地图上了。如果你能用得到的话，就去看看吧。",
+      "role_type": "TALK_ROLE_NPC"
+    }
+  ]
+}
+~~~
+
+##### 5.5 Random Talk Activity
+
+~~~
+{
+  "id": 4002212,
+  "dialogList": [
+    {
+      "id": 400221201,
+      "nextDialogs": [
+        400221202
+      ],
+      "role": "Watanabe",
+      "content": "The situation seems to be stabilizing... Madam Kujou Sara won't feel pressured to take action.",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 400221202,
+      "nextDialogs": [
+        400221203
+      ],
+      "role": "Watanabe",
+      "content": "No need to rush. We'll launch a general offensive as soon as Madam Kujou Sara finishes with her business in the city, and take down this Domain in one go!",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 400221203,
+      "nextDialogs": null,
+      "role": "Paimon",
+      "content": "We should hurry, they seem pretty amped up...",
       "role_type": "TALK_ROLE_NPC"
     }
   ]
