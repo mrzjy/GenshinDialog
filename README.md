@@ -31,6 +31,7 @@ We provide detailed examples of what this project extracts:
 |  3  | Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
 |  4  |  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
 | 5.1 |          Random Talk with Gadget          | extracted_talk/talk_gadget_{lang}.jsonl  |  extract_talks.py  |
+| 5.2 |           Random Talk with NPC            |   extracted_talk/talk_npc_{lang}.jsonl   |  extract_talks.py  |
 
 
 #### 1. Random Playable Character
@@ -248,32 +249,74 @@ We provide detailed examples of what this project extracts:
 }
 ~~~
 
+#### 5.2 Random Talk with NPC
+
+~~~
+{
+  "id": 100805,
+  "dialogList": [
+    {
+      "id": 10080501,
+      "nextDialogs": [
+        10080502
+      ],
+      "role": "Li Dang",
+      "content": "*coughing*",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 10080502,
+      "nextDialogs": [
+        10080503
+      ],
+      "role": "Li Dang",
+      "content": "Wh—What happened? ...Y—You rescued me? Thank you...",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 10080503,
+      "nextDialogs": [
+        10080504
+      ],
+      "role": "Li Dang",
+      "content": "Oh! And have you seen my brother? His name is Li Ding, we were climbing the mountain together.",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 10080504,
+      "nextDialogs": [
+        10080505,
+        10080507
+      ],
+      "role": "Li Dang",
+      "content": "I just hope he didn't get trapped in amber too...",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    ... ...
+    {
+      "id": 10080508,
+      "nextDialogs": [
+        10080509
+      ],
+      "role": "Li Dang",
+      "content": "He made it to the top? That means he should be okay...",
+      "role_type": "TALK_ROLE_NPC"
+    }
+  ]
+}
+~~~
+
 ### Requirement
 ~~~
 Python 3.6+
 ~~~
 
 ### Steps
-1. Get GenshinData from [Dim's project](https://github.com/Dimbreath/GenshinData), you could git clone or download the zip and extract it.
+1. Get GenshinData from Dim's project, you could git clone or download the zip and extract it.
 
    - **Note**: Search for yourself where Dim's project data is... (No longer in Github)
 
-2. Run extract_avatars.py. This results in 1 output file in "extracted_avatar" folder:
-
-   - avatar.json: the parsed avatar information and descriptions
-
-3. (Maybe deprecated) Run extract_dialogs.py. This process results in 2 output files in "extracted_dialog" folder:
-
-   - dialog.jsonl: the parsed Genshin dialogues
-   - raw_dialog.jsonl: the raw Genshin dialogues (you can restore different dialogue branches yourself)
-
-4. Run extract_quests.py. This results in 1 output file in "extracted_quest" folder:
-
-   - quest.jsonl: the quest information (dialogues with quest context)
-
-5. Run extract_talks.py. This results in 1 output file in "extracted_quest" folder: 
-
-   - talk_gadget.jsonl
+2. Run extract_*.py files as you want, resulting in various output files in "extracted_\*" folders
 
 ~~~
 // Command line example
