@@ -19,9 +19,9 @@ def get_role(utterance):
     return role
 
 
-def get_talk_gadget(repo, lang):
+def get_talk(repo, input_path, output_path):
     samples = []
-    for file in glob.iglob(os.path.join(repo, "BinOutput/Talk/Gadget/*.json")):
+    for file in glob.iglob(os.path.join(repo, input_path)):
         with open(file, "r", encoding="utf-8") as f:
             sample = json.load(f)
             dialog_list = []
@@ -33,39 +33,15 @@ def get_talk_gadget(repo, lang):
                     "content": map_hash_to_txt.get(str(utterance.get("talkContentTextMapHash")), None),
                     "role_type": utterance["talkRole"].get("type")
                 })
-            if dialog_list and dialog_list[0]["content"] and not re.search(r"(\(test\)|\$UNRELEASED)", str(dialog_list)):
+            if dialog_list and dialog_list[0]["content"] and not re.search(r"(\(test\)|\$UNRELEASED)",
+                                                                           str(dialog_list)):
                 samples.append({
                     "id": sample["talkId"],
                     "dialogList": dialog_list
                 })
 
-    with open(f"extracted_talk/talk_gadget_{lang}.jsonl", "w", encoding="utf-8") as f:
+    with open(f"extracted_talk/{output_path}", "w", encoding="utf-8") as f:
         for sample in samples:
-            print(json.dumps(sample, ensure_ascii=False), file=f)
-
-
-def get_talk_npc(repo, lang):
-    samples = []
-    for file in glob.iglob(os.path.join(repo, "BinOutput/Talk/NPC/*.json")):
-        with open(file, "r", encoding="utf-8") as f:
-            sample = json.load(f)
-            dialog_list = []
-            for utterance in sample.get("dialogList", []):
-                dialog_list.append({
-                    "id": utterance["id"],
-                    "nextDialogs": utterance.get("nextDialogs", None),
-                    "role": get_role(utterance),
-                    "content": map_hash_to_txt.get(str(utterance.get("talkContentTextMapHash")), None),
-                    "role_type": utterance["talkRole"].get("type")
-                })
-            if dialog_list and dialog_list[0]["content"] and not re.search(r"(\(test\)|\$UNRELEASED)", str(dialog_list)):
-                samples.append({
-                    "id": sample["talkId"],
-                    "dialogList": dialog_list
-                })
-
-    with open(f"extracted_talk/talk_npc_{lang}.jsonl", "w", encoding="utf-8") as f:
-        for sample in samples[:3]:
             print(json.dumps(sample, ensure_ascii=False), file=f)
 
 
@@ -101,5 +77,5 @@ if __name__ == "__main__":
                 str(npc["nameTextMapHash"]), str(npc["nameTextMapHash"])
             )
 
-    get_talk_gadget(args.repo, args.lang)
-    get_talk_npc(args.repo, args.lang)
+    get_talk(args.repo, input_path="BinOutput/Talk/Gadget/*.json", output_path=f"talk_gadget_{args.lang}.jsonl")
+    get_talk(args.repo, input_path="BinOutput/Talk/NPC/*.json", output_path=f"talk_npc_{args.lang}.jsonl")
