@@ -32,6 +32,7 @@ We provide detailed examples of what this project extracts:
 |  4  |  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
 | 5.1 |          Random Talk with Gadget          | extracted_talk/talk_gadget_{lang}.jsonl  |  extract_talks.py  |
 | 5.2 |           Random Talk with NPC            |   extracted_talk/talk_npc_{lang}.jsonl   |  extract_talks.py  |
+| 5.3 |             Random Talk Coop              |  extracted_talk/talk_coop_{lang}.jsonl   |  extract_talks.py  |
 
 
 #### 1. Random Playable Character
@@ -300,6 +301,53 @@ We provide detailed examples of what this project extracts:
       ],
       "role": "Li Dang",
       "content": "He made it to the top? That means he should be okay...",
+      "role_type": "TALK_ROLE_NPC"
+    }
+  ]
+}
+~~~
+
+#### 5.3 Random Talk Coop
+
+~~~
+{
+  "id": 7,
+  "dialogList": [
+    {
+      "id": 1900102101,
+      "nextDialogs": [
+        1900102102
+      ],
+      "role": "Barbara",
+      "content": "Huh, how strange... I can't seem to find any...",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 1900102102,
+      "nextDialogs": [
+        1900102103
+      ],
+      "role": null,
+      "content": "Barbara, I've finally found you.",
+      "role_type": "TALK_ROLE_PLAYER"
+    },
+    ... ...
+    {
+      "id": 1900102112,
+      "nextDialogs": [
+        1900102113
+      ],
+      "role": null,
+      "content": "Why would you want to hide?",
+      "role_type": "TALK_ROLE_PLAYER"
+    },
+    {
+      "id": 1900102113,
+      "nextDialogs": [
+        0
+      ],
+      "role": "Barbara",
+      "content": "Because... Well, just because.",
       "role_type": "TALK_ROLE_NPC"
     }
   ]

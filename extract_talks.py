@@ -41,7 +41,7 @@ def get_talk(repo, input_path, output_path):
                 })
 
     with open(f"extracted_talk/{output_path}", "w", encoding="utf-8") as f:
-        for sample in samples:
+        for sample in samples[:3]:
             print(json.dumps(sample, ensure_ascii=False), file=f)
 
 
@@ -77,5 +77,6 @@ if __name__ == "__main__":
                 str(npc["nameTextMapHash"]), str(npc["nameTextMapHash"])
             )
 
-    get_talk(args.repo, input_path="BinOutput/Talk/Gadget/*.json", output_path=f"talk_gadget_{args.lang}.jsonl")
-    get_talk(args.repo, input_path="BinOutput/Talk/NPC/*.json", output_path=f"talk_npc_{args.lang}.jsonl")
+    # get_talk(args.repo, input_path="BinOutput/Talk/Gadget/*.json", output_path=f"talk_gadget_{args.lang}.jsonl")
+    # get_talk(args.repo, input_path="BinOutput/Talk/NPC/*.json", output_path=f"talk_npc_{args.lang}.jsonl")
+    get_talk(args.repo, input_path="BinOutput/Talk/Coop/*.json", output_path=f"talk_coop_{args.lang}.jsonl")
