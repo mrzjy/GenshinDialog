@@ -33,6 +33,7 @@ We provide detailed examples of what this project extracts:
 | 5.1 |          Random Talk with Gadget          | extracted_talk/talk_gadget_{lang}.jsonl  |  extract_talks.py  |
 | 5.2 |           Random Talk with NPC            |   extracted_talk/talk_npc_{lang}.jsonl   |  extract_talks.py  |
 | 5.3 |             Random Talk Coop              |  extracted_talk/talk_coop_{lang}.jsonl   |  extract_talks.py  |
+| 5.4 |            Random Talk Blossom            | extracted_talk/talk_blossom_{lang}.jsonl |  extract_talks.py  |
 
 
 #### 1. Random Playable Character
@@ -250,7 +251,7 @@ We provide detailed examples of what this project extracts:
 }
 ~~~
 
-#### 5.2 Random Talk with NPC
+##### 5.2 Random Talk with NPC
 
 ~~~
 {
@@ -307,7 +308,7 @@ We provide detailed examples of what this project extracts:
 }
 ~~~
 
-#### 5.3 Random Talk Coop
+##### 5.3 Random Talk Coop
 
 ~~~
 {
@@ -348,6 +349,41 @@ We provide detailed examples of what this project extracts:
       ],
       "role": "Barbara",
       "content": "Because... Well, just because.",
+      "role_type": "TALK_ROLE_NPC"
+    }
+  ]
+}
+~~~
+
+##### 5.4 Random Talk Blossom
+
+~~~
+{
+  "id": 5900007,
+  "dialogList": [
+    {
+      "id": 590000701,
+      "nextDialogs": [
+        590000702
+      ],
+      "role": "秋月",
+      "content": "说起来，最近听说有人在附近看到了紫晶之类的矿石。",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 590000702,
+      "nextDialogs": [
+        590000703
+      ],
+      "role": "秋月",
+      "content": "不过我只是个生意人而已，对采矿什么的其实并不在行，也不方便离开店面。",
+      "role_type": "TALK_ROLE_NPC"
+    },
+    {
+      "id": 590000703,
+      "nextDialogs": null,
+      "role": "秋月",
+      "content": "位置大概在这里…给你标在地图上了。如果你能用得到的话，就去看看吧。",
       "role_type": "TALK_ROLE_NPC"
     }
   ]
