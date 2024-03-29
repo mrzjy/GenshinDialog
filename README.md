@@ -22,14 +22,15 @@ Stats above are from lang=CHS, which is slightly different from other languages
 
 ### Example
 
-We provide 4 examples of what this project extracts:
+We provide detailed examples of what this project extracts:
 
-|                   Item                    |                  Output                  | Corresponding File | 
-|:-----------------------------------------:|:----------------------------------------:|:------------------:|
-|            Playable Characters            |   extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
-|          Dialogues (Deprecated)           |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
-| Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
-|  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
+| Num |                   Item                    |                  Output                  | Corresponding File | 
+|:---:|:-----------------------------------------:|:----------------------------------------:|:------------------:|
+|  1  |            Playable Characters            |   extracted_avatar/avatar_{lang}.json    | extract_avatars.py |
+|  2  |          Dialogues (Deprecated)           |   extracted_dialog/dialog_{lang}.jsonl   | extract_dialogs.py |
+|  3  | Raw Dialogues (Restore branches yourself) | extracted_dialog/raw_dialog_{lang}.jsonl | extract_dialogs.py |
+|  4  |  Raw Quests Dialogues (**recommended**)   |    extracted_quest/quest_{lang}.jsonl    | extract_quests.py  |
+| 5.1 |          Random Talk with Gadget          | extracted_talk/talk_gadget_{lang}.jsonl  |  extract_talks.py  |
 
 
 #### 1. Random Playable Character
@@ -219,6 +220,34 @@ We provide 4 examples of what this project extracts:
         ... ...
 ~~~
 
+#### 5. Random Talk
+
+##### 5.1 Random Talk with Gadget
+
+~~~
+{
+  "id": 1101926,
+  "dialogList": [
+    {
+      "id": 110192601,
+      "nextDialogs": [
+        110192602
+      ],
+      "role": "果核",
+      "content": "（一枚新鲜的果核，说明不久之前有人来过。）",
+      "role_type": "TALK_ROLE_PLAYER"
+    },
+    {
+      "id": 110192602,
+      "nextDialogs": null,
+      "role": "果核",
+      "content": "（很难看出进一步的线索了。）",
+      "role_type": "TALK_ROLE_PLAYER"
+    }
+  ]
+}
+~~~
+
 ### Requirement
 ~~~
 Python 3.6+
@@ -233,7 +262,7 @@ Python 3.6+
 
    - avatar.json: the parsed avatar information and descriptions
 
-3. Run extract_dialogs.py. This process results in 2 output files in "extracted_dialog" folder:
+3. (Maybe deprecated) Run extract_dialogs.py. This process results in 2 output files in "extracted_dialog" folder:
 
    - dialog.jsonl: the parsed Genshin dialogues
    - raw_dialog.jsonl: the raw Genshin dialogues (you can restore different dialogue branches yourself)
@@ -241,6 +270,10 @@ Python 3.6+
 4. Run extract_quests.py. This results in 1 output file in "extracted_quest" folder:
 
    - quest.jsonl: the quest information (dialogues with quest context)
+
+5. Run extract_talks.py. This results in 1 output file in "extracted_quest" folder: 
+
+   - talk_gadget.jsonl
 
 ~~~
 // Command line example
