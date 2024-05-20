@@ -5,6 +5,26 @@ This project simply extracts all character conversations in Genshin Project from
 
 本项目抽取原神游戏的对话语料、材料、武器等语料，感谢 [Dimbreath](https://github.com/Dimbreath) 的神奇项目。
 
+### Table Of Content
+- [GenshinDialog](#genshindialog)
+    + [Description](#description)
+    + [Example](#example)
+      - [1. Random Playable Character](#1-random-playable-character)
+      - [2. Random Dialogue](#2-random-dialogue)
+      - [3. Random Raw Dialogue](#3-random-raw-dialogue)
+      - [4. Random Quest](#4-random-quest)
+      - [5. Random Talk](#5-random-talk)
+        * [5.1 Random Talk with Gadget](#51-random-talk-with-gadget)
+        * [5.2 Random Talk with NPC](#52-random-talk-with-npc)
+        * [5.3 Random Talk Coop](#53-random-talk-coop)
+        * [5.4 Random Talk Blossom](#54-random-talk-blossom)
+        * [5.5 Random Talk Activity](#55-random-talk-activity)
+    + [Requirement](#requirement)
+    + [Steps](#steps)
+    + [Known Issues](#known-issues)
+    + [Extract miscellaneous things](#extract-miscellaneous-things)
+    + [FAQs](#faqs)
+
 ### Description
 
 This project simply extracts all character conversations in Genshin Impact.
