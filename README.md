@@ -553,9 +553,10 @@ def load_json(path: str):
     return data
 ~~~
 
-2. What about other games?
+2. What about other games or projects?
 
    - Other personal projects you might be interested in:
+     - [GenshinCLIP](https://github.com/mrzjy/GenshinCLIP)
      - [StarrailDialog](https://github.com/mrzjy/StarrailDialogue)
      - [ArknightsDialog](https://github.com/mrzjy/ArknightsDialog)
      - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
