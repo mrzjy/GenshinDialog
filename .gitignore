@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+tmp/
 tmp.py
 tmp.txt
 tmp.xlsx
