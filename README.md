@@ -557,6 +557,7 @@ def load_json(path: str):
 
 - [GenshinDialog](https://github.com/mrzjy/GenshinDialog)
 - [StarrailDialog](https://github.com/mrzjy/StarrailDialogue)
+- [ZZZDialog](https://github.com/mrzjy/ZZZDialog)
 - [ArknightsDialog](https://github.com/mrzjy/ArknightsDialog)
 - [WutheringDialog](https://github.com/mrzjy/WutheringDialog)
 - [hoyo_public_wiki_parser](https://github.com/mrzjy/hoyo_public_wiki_parser): Parse Hoyoverse public wiki data
