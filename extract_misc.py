@@ -228,7 +228,7 @@ class GenshinLoader:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--repo", default="../AnimeGameData", type=str, help="data dir"
+        "--repo", default="Path/To/AnimeGameData", type=str, help="data dir"
     )
     parser.add_argument("--lang", default="CHS", type=str, help="language type")
     args = parser.parse_args()
