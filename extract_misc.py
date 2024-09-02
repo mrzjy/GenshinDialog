@@ -109,10 +109,23 @@ class GenshinLoader:
         files = [f for f in all_readable_files if "Weapon" in f]
         # load story
         for weapon_file in files:
-            idx = int(re.match(".+Weapon(\d+).txt", weapon_file).group(1))
+            # 使用单个正则表达式匹配两种格式
+            match = re.match(r".+Weapon(\d+)(?:_(\d))?.txt", weapon_file)
+            if not match:
+                continue  # 如果文件名不匹配，跳过
+
+            idx1 = int(match.group(1))
+            idx2 = match.group(2)  # idx2 可能是 None
+
+            # 读取文件内容
             with open(weapon_file, "r", encoding="utf-8") as g:
                 story = "".join(g.readlines()).strip("\n")
-            self.map_weaponId_to_info[idx]["ReadableText"] = story
+
+            # 根据 idx2 的存在与否决定字典键名
+            readable_text_key = f"ReadableText{idx2}" if idx2 else "ReadableText1"
+
+            # 更新字典中的内容
+            self.map_weaponId_to_info[idx1][readable_text_key] = story
 
         # load skill description
         map_skillId_to_affixList = {}
@@ -215,7 +228,7 @@ class GenshinLoader:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--repo", default="PATH_TO_GENSHINDATA", type=str, help="data dir"
+        "--repo", default="../AnimeGameData", type=str, help="data dir"
     )
     parser.add_argument("--lang", default="CHS", type=str, help="language type")
     args = parser.parse_args()
