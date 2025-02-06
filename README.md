@@ -1,6 +1,13 @@
 <div align=center><img src="./img/image.png"/></div>
 
 # GenshinDialog
+
+**Note**:
+
+This project is currently outdated. Please refer to [multimodal-genshin-impact](https://github.com/mrzjy/multimodal-genshin-impact) if you are still interested in acquiring latest *multimodal* Genshin Impact corpus.
+
+---
+
 This project simply extracts all character conversations in Genshin Project from the legendary [Dimbreath](https://github.com/Dimbreath)'s works.
 
 本项目抽取原神游戏的对话语料、材料、武器等语料，感谢 [Dimbreath](https://github.com/Dimbreath) 的神奇项目。
